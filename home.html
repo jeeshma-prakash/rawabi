@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Hero Section</title>
+    <style>
+        /* --- General Reset & Fonts --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Avoid styling body to prevent global conflicts */
+        .hero-section, .hero-content-overlay {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* --- Hero Section Layout --- */
+        .hero-section {
+            position: relative;
+            height: 100vh; /* Full viewport height */
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Dynamic Background Styling (Right Side - Shipwreck) */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Behind the content */
+        }
+
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(80%); /* Subtle overlay for contrast */
+            /* Add a subtle fade transition to the image itself */
+            transition: opacity 0.5s ease-in-out; 
+        }
+
+        /* Content Overlay (The entire content on top of the background) */
+        .hero-content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2; /* On top of the background */
+            display: flex;
+            flex-direction: column;
+            padding: 30px 5%;
+        }
+
+        /* --- The Wavy Divider (Left Side - Sand Color) --- */
+        .hero-content-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 55%; /* Controls the width of the left content area */
+            /* Using a gradient for a smoother, softer color transition */
+            /* background: rgb(224, 121, 36);  */
+            z-index: -1; 
+
+            /* Creates the soft, curved transition/wave effect on the right edge */
+            mask-image: linear-gradient(to right, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        }
+
+        /* --- Travel Navbar (unique classes, responsive) --- */
+        .home-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 16px;
+            padding-bottom: 40px;
+            color: #fff;
+        }
+        .home-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            font-size: 1.15rem;
+        }
+        .home-brand img { height: 32px; width: 32px; object-fit: contain; }
+        .home-nav-menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+        .home-nav-menu a { color: #fff; text-decoration: none; font-weight: 600; }
+        .home-nav-menu a:hover { opacity: 0.9; }
+        .home-cta .home-btn {
+            background: #00a6ff;
+            color: #fff !important;
+            padding: 10px 18px;
+            border-radius: 24px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .home-nav-toggle {
+            display: none;
+            width: 42px; height: 42px;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 10px;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(3px);
+            cursor: pointer;
+        }
+        .home-nav-toggle span {
+            display: block; height: 2px; width: 22px; margin: 6px auto; background: #fff; border-radius: 2px;
+        }
+
+        /* --- Main Header Text --- */
+        .main-header-area {
+            color: #ffffff;
+            margin-top: 10%;
+        }
+
+        .sub-nav-text {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            opacity: 0.7;
+            font-weight: bold;
+        }
+
+        .sub-nav-text .active {
+            color: #e1dddd;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 900;
+            line-height: 1.1;
+            width: 50%; /* Constrain to the left side */
+        }
+
+        /* --- Cards Carousel --- */
+        .cards-section {
+            margin-top: 50px;
+            width: 50%; /* Constrain to the left side */
+            color: #f4f1f1;
+        }
+
+        .carousel-container {
+            overflow: hidden; /* Hide cards outside the view */
+            margin-top: 15px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+
+        .trip-card {
+            flex-shrink: 0; /* Cards don't shrink */
+            width: 180px; /* Card fixed width */
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent; /* Default */
+            transition: border 0.3s ease;
+        }
+
+        .trip-card.active {
+            border: 3px solid white; /* Highlight active card */
+        }
+
+        .trip-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .trip-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-info {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            padding: 15px 10px 5px 10px;
+        }
+
+        .card-info h3 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .card-info p {
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+
+        /* --- Booking Form --- */
+        .booking-form {
+            position: absolute;
+            bottom: 30px;
+            left: 5%;
+            right: 5%;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .form-field {
+            flex-grow: 1;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            border-right: 1px solid #ddd;
+            color: #555;
+            font-weight: 500;
+            cursor: text;
+        }
+
+        .form-field:last-of-type {
+            border-right: none;
+        }
+
+        .btn-search {
+            background-color: #f7b46d; /* Orange/Sand Color */
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* --- Hero Transition Overlay (expand from card) --- */
+        .home-hero-transition {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            transform: translate(0,0);
+            transition: top 600ms ease, left 600ms ease, width 600ms ease, height 600ms ease, border-radius 600ms ease, opacity 350ms ease;
+        }
+        .home-hero-transition img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* --- Hero Next Preview (origin of expand) --- */
+        .home-hero-preview {
+            position: absolute;
+            right: 5%;
+            bottom: 110px;
+            width: 150px;
+            height: 100px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            z-index: 5;
+        }
+        .home-hero-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .home-hero-preview .home-tag {
+            position: absolute; top: 6px; left: 6px; font-size: 11px; line-height: 1; color: #fff; background: rgba(0,0,0,0.55); padding: 4px 8px; border-radius: 8px; letter-spacing: .3px;
+        }
+
+        /* --- Preloader (3s) --- */
+        .home-preloader {
+            position: fixed; inset: 0; z-index: 10000; background: radial-gradient(1200px 600px at 20% 10%, #02223b 0%, #011726 60%, #00111d 100%);
+            display: grid; place-items: center; color: #fff;
+        }
+        .home-preloader-content { position: relative; width: 180px; height: 180px; }
+        .home-preloader .home-globe {
+            position: absolute; inset: 0; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+            animation: home-pulse 2000ms ease-in-out infinite;
+        }
+        .home-preloader .home-plane {
+            position: absolute; width: 72px; height: 72px; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            animation: home-fly 3000ms cubic-bezier(.2,.7,.2,1) infinite;
+        }
+        .home-preloader .home-dots { position: absolute; left: 50%; bottom: -32px; transform: translateX(-50%); display: flex; gap: 6px; }
+        .home-preloader .home-dot { width: 6px; height: 6px; border-radius: 50%; background: #7fd6ff; opacity: 0.6; animation: home-dots 1200ms ease-in-out infinite; }
+        .home-preloader .home-dot:nth-child(2){ animation-delay: 200ms; } .home-preloader .home-dot:nth-child(3){ animation-delay: 400ms; }
+        .home-preloader--hide { opacity: 0; transition: opacity 500ms ease; pointer-events: none; }
+        @keyframes home-fly { 0%{ transform: translate(-50%, -50%) rotate(-12deg) scale(0.8);} 45%{ transform: translate(80px, -110px) rotate(6deg) scale(1);} 100%{ transform: translate(-50%, -50%) rotate(-12deg) scale(0.8);} }
+        @keyframes home-pulse { 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.04);} }
+        @keyframes home-dots { 0%,100%{ transform: translateY(0); opacity: .4;} 50%{ transform: translateY(-6px); opacity: 1; } }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 2.5em;
+                width: 100%;
+            }
+
+            .hero-content-overlay::before {
+                width: 100%; /* Cover full width */
+                height: 50%; /* Cover top half */
+                mask-image: none; /* Remove the complex wave on mobile */
+                -webkit-mask-image: none;
+            }
+
+            .cards-section {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .booking-form {
+                flex-wrap: wrap;
+                bottom: 10px;
+                padding: 10px;
+            }
+
+            .form-field {
+                width: 50%; /* Two fields per row */
+                border-right: none;
+                margin-bottom: 10px;
+                padding: 10px;
+            }
+
+            .btn-search {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .home-nav-toggle { display: inline-block; }
+            .home-nav-menu {
+                position: absolute; right: 5%; top: 80px;
+                background: rgba(0,0,0,0.35);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 14px;
+                padding: 14px;
+                display: none;
+                flex-direction: column;
+                gap: 12px;
+                min-width: 220px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            }
+            .home-nav-menu.is-open { display: flex; }
+            .home-hero-preview { right: 5%; bottom: 80px; width: 130px; height: 86px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Preloader (3s) -->
+<div class="home-preloader" id="home-preloader" aria-hidden="true">
+    <div class="home-preloader-content" role="status" aria-live="polite">
+        <img class="home-globe" src="assets/images/map.png" alt="World map" />
+        <img class="home-plane" src="assets/images/plane-1.png" alt="Flying plane" />
+        <div class="home-dots"><span class="home-dot"></span><span class="home-dot"></span><span class="home-dot"></span></div>
+    </div>
+    <span class="sr-only" style="position:absolute;left:-9999px;">Loading your next adventure…</span>
+    </div>
+
+<header class="hero-section">
+    <div class="hero-background">
+        <img id="dynamic-bg-img" src="assets/images/download (18).jpeg" alt="Vacation Destination Background">
+    </div>
+
+    <div class="hero-content-overlay">
+        
+        <nav class="home-nav" role="navigation" aria-label="Primary">
+            <a class="home-brand" href="#">
+                <img src="assets/images/loud.png" alt="Wanderly logo">
+                <span>Wanderly</span>
+            </a>
+            <button class="home-nav-toggle" id="home-nav-toggle" aria-expanded="false" aria-controls="home-nav-menu" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="home-nav-menu" id="home-nav-menu">
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Tours</a></li>
+                <li><a href="#">Packages</a></li>
+                <li><a href="#">Contact</a></li>
+                <li class="home-cta"><a class="home-btn" href="#">Book Now</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-header-area">
+            <div class="sub-nav-text">
+                <span class="active">MOUNTAINS</span> / <span>PLAINS</span> / <span>BEACHES</span>
+            </div>
+            <h1>Spend your vacation<br>with our activities</h1>
+        </div>
+
+        <div class="cards-section">
+            <h2>MOST POPULAR</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="card-carousel">
+                    
+                    <div class="trip-card" data-bg-img="assets/images/download (20).jpeg">
+                        <img src="assets/images/download (20).jpeg" alt="Trip to Scotland">
+                        <div class="card-info">
+                            <h3>Trip to Scotland</h3>
+                            <p><span>6730</span> people going</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trip-card" data-bg-img="assets/images/download (18).jpeg">
+                        <img src="assets/images/download (18).jpeg" alt="Trip to Egypt">
+                        <div class="card-info">
+                            <h3>Trip to Egypt</h3>
+                            <p><span>27</span> people going</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trip-card" data-bg-img="assets/images/download (21).jpeg">
+                        <img src="assets/images/download (21).jpeg" alt="Trip to Greece">
+                        <div class="card-info">
+                            <h3>Trip to Greece</h3>
+                            <p><span>31</span> people going</p>
+                        </div>
+                    </div>
+
+                    <div class="trip-card" data-bg-img="assets/images/download (22).jpeg">
+                        <img src="assets/images/download (22).jpeg" alt="Trip to Iceland">
+                        <div class="card-info">
+                            <h3>Trip to Iceland</h3>
+                            <p><span>450</span> people going</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Next preview: image expands from here into the hero -->
+        <div class="home-hero-preview" id="home-hero-preview" aria-hidden="true">
+            <img src="assets/images/download (21).jpeg" alt="Next preview">
+            <span class="home-tag">Next</span>
+        </div>
+        
+    </div>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const carouselTrack = document.getElementById('card-carousel');
+        const dynamicBgImg = document.getElementById('dynamic-bg-img');
+        const homePreloader = document.getElementById('home-preloader');
+        const navToggle = document.getElementById('home-nav-toggle');
+        const navMenu = document.getElementById('home-nav-menu');
+        const heroPreview = document.getElementById('home-hero-preview');
+        const heroPreviewImg = heroPreview ? heroPreview.querySelector('img') : null;
+
+        // --- Preloader: show for 3s, then fade out ---
+        setTimeout(() => {
+            if (homePreloader) {
+                homePreloader.classList.add('home-preloader--hide');
+                setTimeout(() => homePreloader.remove(), 550);
+            }
+        }, 3000);
+
+        // --- Nav toggle (mobile) ---
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                const open = navMenu.classList.toggle('is-open');
+                navToggle.setAttribute('aria-expanded', String(open));
+            });
+        }
+
+    // --- Cards / Carousel setup ---
+        const allCardsInTrack = Array.from(carouselTrack.querySelectorAll('.trip-card'));
+        const originalCards = allCardsInTrack.slice(0, 4);
+        const cardCount = originalCards.length;
+        const cardWidth = 200; // 180px + 20px gap
+        let currentIndex = 0;
+    let carouselTimer = null;
+
+        // Clone first few cards for loop
+        const clonesNeeded = 3;
+        for (let i = 0; i < clonesNeeded; i++) {
+            const clone = originalCards[i].cloneNode(true);
+            clone.classList.add('clone');
+            carouselTrack.appendChild(clone);
+        }
+
+        // Helpers
+        function setPreviewForIndex(nextIndex) {
+            if (!heroPreviewImg || cardCount === 0) return;
+            const actual = nextIndex % cardCount;
+            const nextCard = originalCards[actual];
+            const src = nextCard.getAttribute('data-bg-img');
+            heroPreviewImg.src = src;
+        }
+
+        // Transition helper: expand from fixed preview box to hero
+        function playExpandFromPreview(newSrc) {
+            const fromRect = heroPreviewImg ? heroPreviewImg.getBoundingClientRect() : null;
+            const heroImgRect = dynamicBgImg.getBoundingClientRect();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'home-hero-transition';
+            const overlayImg = document.createElement('img');
+            overlayImg.src = newSrc;
+            overlay.appendChild(overlayImg);
+            document.body.appendChild(overlay);
+
+            // Start at preview position/size (fallback to small center if not available)
+            if (fromRect) {
+                overlay.style.top = fromRect.top + 'px';
+                overlay.style.left = fromRect.left + 'px';
+                overlay.style.width = fromRect.width + 'px';
+                overlay.style.height = fromRect.height + 'px';
+            } else {
+                const vw = Math.min(window.innerWidth * 0.3, 200);
+                const vh = vw * 0.66;
+                overlay.style.top = (window.innerHeight/2 - vh/2) + 'px';
+                overlay.style.left = (window.innerWidth/2 - vw/2) + 'px';
+                overlay.style.width = vw + 'px';
+                overlay.style.height = vh + 'px';
+            }
+
+            // Force style calc
+            overlay.getBoundingClientRect();
+
+            // Animate to hero image bounds
+            requestAnimationFrame(() => {
+                overlay.style.top = heroImgRect.top + 'px';
+                overlay.style.left = heroImgRect.left + 'px';
+                overlay.style.width = heroImgRect.width + 'px';
+                overlay.style.height = heroImgRect.height + 'px';
+                overlay.style.borderRadius = '0px';
+            });
+
+            // After transition completes, swap bg and remove overlay
+            setTimeout(() => {
+                dynamicBgImg.style.opacity = '0';
+                dynamicBgImg.addEventListener('transitionend', function handler(){
+                    dynamicBgImg.removeEventListener('transitionend', handler);
+                });
+                dynamicBgImg.src = newSrc;
+                // brief fade-in
+                setTimeout(() => { dynamicBgImg.style.opacity = '1'; }, 50);
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.remove(), 350);
+            }, 620);
+        }
+
+        function updateActiveState(index) {
+            const actualIndex = index % cardCount;
+            const nextCard = originalCards[actualIndex];
+            const nextBgSrc = nextCard.getAttribute('data-bg-img');
+
+            // Ensure preview shows what's about to expand
+            setPreviewForIndex(actualIndex);
+
+            // Transition effect from preview to hero image
+            playExpandFromPreview(nextBgSrc);
+
+            // Active card border
+            document.querySelector('.trip-card.active')?.classList.remove('active');
+            nextCard.classList.add('active');
+        }
+
+        // Initial: set hero and preview without animation
+        if (originalCards.length > 0) {
+            const firstSrc = originalCards[0].getAttribute('data-bg-img');
+            dynamicBgImg.src = firstSrc;
+            originalCards[0].classList.add('active');
+            setPreviewForIndex(1);
+        }
+
+        // Manual click: set preview to chosen image, then expand
+        allCardsInTrack.forEach(card => {
+            card.addEventListener('click', function() {
+                const newBgSrc = this.getAttribute('data-bg-img');
+                if (heroPreviewImg) heroPreviewImg.src = newBgSrc;
+                playExpandFromPreview(newBgSrc);
+                if (!this.classList.contains('clone')) {
+                    document.querySelector('.trip-card.active')?.classList.remove('active');
+                    this.classList.add('active');
+                    currentIndex = originalCards.indexOf(this);
+                }
+            });
+        });
+
+        // Auto-scroll
+        function moveCarousel() {
+            currentIndex++;
+            updateActiveState(currentIndex);
+            carouselTrack.style.transition = 'transform 0.5s ease-in-out';
+            carouselTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            if (currentIndex >= cardCount) {
+                setTimeout(() => {
+                    carouselTrack.style.transition = 'none';
+                    currentIndex = 0;
+                    carouselTrack.style.transform = 'translateX(0)';
+                    // Do not animate again immediately; just keep state consistent
+                    const firstSrc = originalCards[0].getAttribute('data-bg-img');
+                    dynamicBgImg.src = firstSrc;
+                    setPreviewForIndex(1);
+                    document.querySelector('.trip-card.active')?.classList.remove('active');
+                    originalCards[0].classList.add('active');
+                }, 500);
+            }
+        }
+
+        // Start auto-scroll after preloader hides so animations are visible
+        const startCarousel = () => {
+            if (carouselTimer) clearInterval(carouselTimer);
+            carouselTimer = setInterval(moveCarousel, 3500);
+        };
+
+        // If preloader exists, start after it; otherwise start immediately
+        if (homePreloader) {
+            setTimeout(startCarousel, 3600);
+        } else {
+            startCarousel();
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <title>Travel Section</title>
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Font (Nunito Sans – exact match style) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+
+
+</head>
+
+<body>
+  <!-- Preloader (3s) -->
+<!-- <div class="home-preloader" id="home-preloader" aria-hidden="true">
+    <div class="home-preloader-content" role="status" aria-live="polite">
+        <img class="home-globe" src="assets/images/map.png" alt="World map" />
+        <img class="home-plane" src="assets/images/plane-1.png" alt="Flying plane" />
+        <div class="home-dots"><span class="home-dot"></span><span class="home-dot"></span><span class="home-dot"></span></div>
+    </div>
+    <span class="sr-only" style="position:absolute;left:-9999px;">Loading your next adventure…</span>
+    </div> -->
+
+<section class="hero2" aria-label="Hero">
+  <!-- overlays -->
+  <div class="hero2-overlay hero2-overlay--top" aria-hidden="true"></div>
+  <div class="hero2-overlay hero2-overlay--bottom" aria-hidden="true"></div>
+
+  <!-- nav overlay (kept for site navigation) -->
+  <nav class="home-nav" role="navigation" aria-label="Primary">
+    <a class="home-brand" href="#">
+      <img src="assets/images/rawabi-logo.png" alt="Rawabi logo">
+    </a>
+    <button class="home-nav-toggle" id="home-nav-toggle" aria-expanded="false" aria-controls="home-nav-menu" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="home-nav-menu" id="home-nav-menu">
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Tours</a></li>
+      <li><a href="#">Packages</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <!-- <div class="home-cta"><a class="home-btn" href="#">Book Now</a></div> -->
+  </nav>
+
+  <!-- exact-transition slider (namespaced) -->
+  <div class="hero2-container">
+    <div class="hero2-slide">
+
+      <div style="z-index: 100;position:absolute;top:25%;left:8%;color:#fff;">
+        <div> 
+          <h1 style="font-size: 4rem;">From Dreams to Destinations</h1>
+          <!-- <button style="margin-top: 20px; padding: 10px 20px; font-size: 1.1rem; background-color:rgba(255, 255, 255, 0.76); color: rgb(255, 0, 0); border: none; border-radius: 5px; cursor: pointer;">Explore Now</button> -->
+          <p>Discover breathtaking places, unforgettable memories, and journeys designed just for you.</p>
+        </div>
+      </div>
+
+      <div class="hero2-item" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('assets/images/mal-hero.jpg');">
+        <div class="hero2-content">
+          <div class="hero2-name">Scotland</div>
+          <div class="hero2-des">Experience the mystical Highlands under twilight skies and misty lochs.</div>
+          <a class="hero2-seeMore" target="_blank" href="https://github.com/MDJAmin"><button>See More</button></a>
+        </div>
+      </div>
+
+      <div class="hero2-item" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('assets/images/goa\ -hero.jpg');">
+        <div class="hero2-content">
+          <div class="hero2-name">Norway</div>
+          <div class="hero2-des">Chase the Northern Lights under star-lit skies along scenic fjord roads.</div>
+          <a class="hero2-seeMore" target="_blank" href="https://github.com/MDJAmin"><button>See More</button></a>
+        </div>
+      </div>
+
+      <div class="hero2-item" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('assets/images/kerala.jpg');">
+        <div class="hero2-content">
+          <div class="hero2-name">New Zealand</div>
+          <div class="hero2-des">Wander dramatic, mist-laden mountain paths that feel straight out of a dream.</div>
+          <a class="hero2-seeMore" target="_blank" href="https://github.com/MDJAmin"><button>See More</button></a>
+        </div>
+      </div>
+
+      <div class="hero2-item" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/The\ Ultimate\ Guide\ to\ Cherry\ Blossom\ Festivals\ Across\ Japan.jpeg');">
+        <div class="hero2-content">
+          <div class="hero2-name">Japan</div>
+          <div class="hero2-des">Discover serene mountain temples shrouded in dusk and ancient forest trails.</div>
+          <a class="hero2-seeMore" target="_blank" href="https://github.com/MDJAmin"><button>See More</button></a>
+        </div>
+      </div>
+
+      <div class="hero2-item" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/Overwater\ Bungalows\ in\ the\ Maldives.jpeg');">
+        <div class="hero2-content">
+          <div class="hero2-name">Japan</div>
+          <div class="hero2-des">Discover serene mountain temples shrouded in dusk and ancient forest trails.</div>
+          <a class="hero2-seeMore" target="_blank" href="https://github.com/MDJAmin"><button>See More</button></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero2-button">
+      <!-- <button class="hero2-prev" aria-label="Previous">◁</button>
+      <button class="hero2-next" aria-label="Next">▷</button> -->
+    </div>
+  </div>
+</section>
+<section aria-label="Company stats">
+  <div class="divider stats-counters" id="stats-counters">
+    <div class="stat">
+      <div class="icon" aria-hidden="true"><i class="fa-solid fa-award"></i></div>
+      <div class="value"><span class="counter" data-target="10">0</span>+</div>
+      <div class="label">Years Of Experience</div>
+    </div>
+
+    <div class="stat">
+      <div class="icon" aria-hidden="true"><i class="fa-solid fa-user-group"></i></div>
+      <div class="value"><span class="counter" data-target="1000">0</span>+</div>
+      <div class="label">Happy Customers</div>
+    </div>
+
+    <div class="stat">
+      <div class="icon" aria-hidden="true"><i class="fa-solid fa-earth-europe"></i></div>
+      <div class="value"><span class="counter" data-target="25">0</span>+</div>
+      <div class="label">Professional Guide</div>
+    </div>
+
+    <div class="stat">
+      <div class="icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></div>
+      <div class="value"><span class="counter" data-target="250">0</span>+</div>
+      <div class="label">Top Destinations</div>
+    </div>
+  </div>
+</section>
+  <!-- Top Destinations Carousel (matches reference design) -->
+  <section class="top-dests container">
+    <div class="td-header d-flex align-items-center justify-content-between">
+      <div>
+        <p class="td-eyebrow mb-1">MANY TOURISTS VISIT</p>
+        <h2 class="td-title m-0">Malabar DMC Packages</h2>
+      </div>
+      <div class="d-flex align-items-center gap-3 td-right">
+        <div class="td-sub m-0"><span class="fw-bold">+20</span> Attractive destinations</div>
+        <div class="td-nav d-none d-sm-flex">
+          <button class="td-prev" aria-label="Previous">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          <button class="td-next" aria-label="Next">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="owl-carousel top-dest-carousel mt-4">
+      <!-- Card 1 -->
+      <article class="td-card">
+        <img src="assets/images/calicut-wayanad.jpeg" alt="Calicut – Wayanad" />
+        <div class="td-overlay"></div>
+        <div class="td-pin"><i class="bi bi-geo-alt-fill"></i></div>
+        <div class="td-info">
+          <h5 class="td-name">Calicut – Wayanad</h5>
+          <span class="td-tours">Arrival at Calicut International Airport / Railway Station and later on explore the Wayanad  destinations.</span>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="td-card">
+        <img src="assets/images/calicut-knnur.jpeg" alt="Kardal mountains" />
+        <div class="td-overlay"></div>
+        <div class="td-pin"><i class="bi bi-geo-alt-fill"></i></div>
+        <div class="td-info">
+          <h5 class="td-name">Calicut – Kannur</h5>
+          <span class="td-tours">Arrival at Calicut International Airport / Railway Station and later on explore the Kannur destinations.</span>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="td-card">
+        <img src="assets/images/Kozhikode.jpeg" alt="Leront waterfall" />
+        <div class="td-overlay"></div>
+        <div class="td-pin"><i class="bi bi-geo-alt-fill"></i></div>
+        <div class="td-info">
+          <h5 class="td-name">Calicut – Wayanad – Kannur</h5>
+          <span class="td-tours">Arrival at Calicut International Airport / Railway Station and later on explore the Wayanad  and Kannur destinations.</span>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="td-card">
+        <img src="assets/images/Hill Station - _Coorg, Karnataka • India.jpeg" alt="Crystal beach" />
+        <div class="td-overlay"></div>
+        <div class="td-pin"><i class="bi bi-geo-alt-fill"></i></div>
+        <div class="td-info">
+          <h5 class="td-name">Calicut – Wayanad – Coorg</h5>
+          <span class="td-tours">Arrival at Calicut International Airport / Railway Station and later on explore the Wayanad  and Coorg destinations.</span>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="td-card">
+        <img src="assets/images/ooty.jpeg" alt="Cherry blossoms Japan" />
+        <div class="td-overlay"></div>
+        <div class="td-pin"><i class="bi bi-geo-alt-fill"></i></div>
+        <div class="td-info">
+          <h5 class="td-name">Calicut – Wayanad – Ooty</h5>
+          <span class="td-tours">Arrival at Calicut International Airport / Railway Station and later on explore the Wayanad and Ooty  destinations.</span>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="td-card">
+        <img src="assets/images/mysore.jpeg" alt="California coast" />
+        <div class="td-overlay"></div>
+        <div class="td-pin"><i class="bi bi-geo-alt-fill"></i></div>
+        <div class="td-info">
+          <h5 class="td-name">Calicut – Wayanad– Mysore</h5>
+          <span class="td-tours">Arrival at Calicut International Airport / Railway Station and later on explore the Wayanad and Mysore destinations.</span>
+        </div>
+      </article>
+    </div>
+
+    <!-- Mobile nav (shows below on small screens) -->
+    <div class="td-nav td-nav-mobile d-flex d-sm-none justify-content-center gap-3 mt-3">
+      <button class="td-prev" aria-label="Previous">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+      <button class="td-next" aria-label="Next">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="about-images">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+            alt="Sea">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+            alt="Canal City">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+            alt="Hot Air Balloons">
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="about-content">
+          <h6>About</h6>
+          <h2>Rawabi a Company With a Mission To Serve</h2>
+          <p>Let's choose your dream destinations. Here we provide many destinations and we offer the best
+            destinations every week.</p>
+
+          <div class="partners mt-5">
+            <h6 class="partners-eyebrow">Our Associate Partners</h6>
+            <div class="owl-carousel partners-carousel">
+              <div class="partner-item"><img src="assets/images/associate-1.png" alt="Partner 1"></div>
+              <div class="partner-item"><img src="assets/images/associate-2.png" alt="Partner 2"></div>
+              <div class="partner-item"><img src="assets/images/associate-3.png" alt="Partner 3"></div>
+              <div class="partner-item"><img src="assets/images/associate-4.png" alt="Partner 4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features-section container ">
+    <div class="row g-4 align-items-center">
+
+      <div class="col-md-3">
+        <h6>What We Give</h6>
+        <h2>Best Features </h2>
+        <p>We will provide the best features for those of you who want to travel comfortably with your family.
+        </p>
+      </div>
+
+      <div class="col-md-3">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="bi bi-signpost-2"></i>
+          </div>
+          <h5>Lots of Choices</h5>
+          <p>We have provided several choices of destinations and very cheap travelling packages.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="bi bi-person-video3"></i>
+          </div>
+          <h5>Best Tour Guide</h5>
+          <p>We provide professional tour guides who understand the place perfectly.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="bi bi-calendar2-check"></i>
+          </div>
+          <h5>Easy Booking</h5>
+          <p>We make it easier for users to book tickets and the places they want.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- indian pacage section -->
+   <div class="container slider-container">
+	<div class="now-showing">Incredible! India Packages</div>
+
+	<div class="accordion-slider">
+		<div class="slide" style="background-image: url('assets/images/ooty.jpeg')">
+			<div class="slide-content">
+				<div class="slide-number">01</div>
+				<div class="car-brand"> Tamil Nadu</div>
+				<div class="car-name">ooty, Tamil Nadu</div>
+				<div class="car-subtitle">Ooty (short for Udhagamandalam) is a resort town in the Western Ghats mountains, in southern India’s Tamil Nadu state. Founded as a British Raj summer resort, it retains a working steam railway line.</div>
+				<div class="performance-badges">
+					<div class="badge">
+						<div class="badge-icon"></div>
+						<span>Price: ₹ 24900.00</span>
+					</div>
+				</div>
+			</div>
+			<div class="add-button"></div>
+		</div>
+
+		<div class="slide" style="background-image: url('assets/images/kashmir.jpeg')">
+			<div class="slide-content">
+				<div class="slide-number">02</div>
+				<div class="car-brand"> Kashmir</div>
+				<div class="car-name">Gulmarg, Kashmir</div>
+				<div class="car-subtitle">Gulmarg means the ‘Meadow of Flowers’. It is a beautiful hill station that is popular for breathtaking views and salubrious weather. Gulmarg is one of the beautiful place that can be visited in Kashmir valley.</div>
+				<div class="performance-badges">
+					<div class="badge">
+						<div class="badge-icon"></div>
+						<span>Price: ₹ 24900.00</span>
+					</div>
+				</div>
+			</div>
+			<div class="add-button"></div>
+		</div>
+
+		<div class="slide" style="background-image: url('assets/images/goa.jpeg')">
+			<div class="slide-content">
+				<div class="slide-number">03</div>
+				<div class="car-brand"> Goa</div>
+				<div class="car-name">Panaji, Goa</div>
+				<div class="car-subtitle">For lovers of beaches, Goa is the perfect tourist spot. Without any exaggeration, Goa is all about beaches along with touch of Portuguese culture and historical buildings which differentiate the state from rest of the country.</div>
+				<div class="performance-badges">
+					<div class="badge">
+						<div class="badge-icon"></div>
+						<span>Price: ₹ 24900.00</span>
+					</div>
+				</div>
+			</div>
+			<div class="add-button"></div>
+		</div>
+
+		
+	</div>
+
+	<button class="navigation-arrows nav-prev">‹</button>
+	<button class="navigation-arrows nav-next">›</button>
+</div>
+
+  <section class="travel-section" id="travel-section">
+    <div class="container position-relative">
+      <div class="row align-items-center">
+        <!-- Left Column -->
+        <div class="col-lg-6 col-md-12">
+          <div class="travel-text">
+            <h2>Plan easy, Pay less and<br>Experience more</h2>
+            <p>Unleash the possibilities of enchanting destinations, ensuring your holiday is wrapped in comfort and
+              convenience.</p>
+            <button class="btn-learn">Learn More</button>
+          </div>
+          <div class="img-wrapper left-img">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
+              alt="left image">
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-6 col-md-12 position-relative">
+          <div class="img-wrapper right-img">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80"
+              alt="right image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Plane -->
+      <img src="assets/images/plane-1.png" alt="plane" class="plane-img">
+
+      <!-- Search Box -->
+      <div class="search-box">
+        <div class="item">
+          <span>Destination</span>
+          Mombasa, Kenya
+        </div>
+        <div class="item">
+          <span>Average price</span>
+          $900–$1,000
+        </div>
+        <div class="item">
+          <span>Date</span>
+          Fri, Nov 10th
+        </div>
+        <button>Search</button>
+      </div>
+    </div>
+  </section>
+    <!-- Top Destinations Section -->
+    <section class="destinations" id="destinations">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="dest-title">Popular Kerala Destination</h2>
+          <p class="dest-sub">Kerala has a plethora of popular destinations for travelers to visit and enjoy. Below we have listed some of the most famous tourist havens that our shores have to offer.</p>
+        </div>
+
+        <div class="destinations-grid" id="destinations-grid">
+          <!-- Card 1 -->
+          <article class="destination-card">
+            <div class="dest-img-wrap">
+              <img src="assets/images/download (18).jpeg" alt="London Eye, England">
+              <span class="price-pill">$750.10</span>
+            </div>
+            <div class="dest-body">
+              <h5 class="dest-name">Vikas, England</h5>
+              <p class="dest-desc">Moke Gora - Serbia's SECRET Mountain Paradise</p>
+              <div class="dest-meta">
+                <span><i class="fa-regular fa-clock"></i> 8 Days Trip</span>
+                <button class="btn-book">Book Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="destination-card">
+            <div class="dest-img-wrap">
+              <img src="assets/images/download (19).jpeg" alt="Italy, Europe">
+              <span class="price-pill">$550.10</span>
+            </div>
+            <div class="dest-body">
+              <h5 class="dest-name">Motal, Europe</h5>
+              <p class="dest-desc">Traveling Europe by Campervan — Our tips for van life</p>
+              <div class="dest-meta">
+                <span><i class="fa-regular fa-clock"></i> 6 Days Trip</span>
+                <button class="btn-book">Book Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="destination-card">
+            <div class="dest-img-wrap">
+              <img src="assets/images/download (20).jpeg" alt="Eola, Srilanka">
+              <span class="price-pill">$600.10</span>
+            </div>
+            <div class="dest-body">
+              <h5 class="dest-name">Eola, Srilanka</h5>
+              <p class="dest-desc">Climbing Sigiriya (L) Hanudhaka Rock in Srilanka</p>
+              <div class="dest-meta">
+                <span><i class="fa-regular fa-clock"></i> 6 Days Trip</span>
+                <button class="btn-book">Book Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="destination-card">
+            <div class="dest-img-wrap">
+              <img src="assets/images/download (21).jpeg" alt="Maldives">
+              <span class="price-pill">$899.00</span>
+            </div>
+            <div class="dest-body">
+              <h5 class="dest-name">Maldives</h5>
+              <p class="dest-desc">Overwater luxury and crystal-clear lagoons.</p>
+              <div class="dest-meta">
+                <span><i class="fa-regular fa-clock"></i> 5 Days Trip</span>
+                <button class="btn-book">Book Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="destination-card">
+            <div class="dest-img-wrap">
+              <img src="assets/images/download (22).jpeg" alt="Japan, Sakura Season">
+              <span class="price-pill">$799.50</span>
+            </div>
+            <div class="dest-body">
+              <h5 class="dest-name">Tokyo, Japan</h5>
+              <p class="dest-desc">Spring blooms and neon nights in the big city.</p>
+              <div class="dest-meta">
+                <span><i class="fa-regular fa-clock"></i> 7 Days Trip</span>
+                <button class="btn-book">Book Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="destination-card">
+            <div class="dest-img-wrap">
+              <img src="assets/images/landscape.jpeg" alt="California Coast">
+              <span class="price-pill">$680.00</span>
+            </div>
+            <div class="dest-body">
+              <h5 class="dest-name">California, USA</h5>
+              <p class="dest-desc">Pacific Coast Highway and sunny escapes.</p>
+              <div class="dest-meta">
+                <span><i class="fa-regular fa-clock"></i> 4 Days Trip</span>
+                <button class="btn-book">Book Now</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-4">
+          <button id="destinations-load-more" class="btn-dest-more">More Packages</button>
+        </div>
+      </div>
+    </section>
+
+  <div id="carousel-container">
+
+    <div id="left-panel">
+      <div id="main-image-wrapper">
+        <img id="main-image" src="" alt="Main destination image">
+        <div></div>
+      </div>
+
+      <div id="controls-container">
+        <div class="nav-buttons">
+          <button id="prev-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button id="next-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div id="counter-wrapper">
+          <div id="progress-line-container">
+            <div id="progress-line"></div>
+          </div>
+          <div id="counter">01</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="right-panel">
+      <div id="text-content">
+        <h3 id="subtitle-text">World Tour Packages</h3>
+        <h2 id="main-title-text">Turkey</h2>
+        <p id="description-text">Experience the ancient empires that have left their mark in world-famous ruins; immerse yourself in blockbuster scenery by sea, land and air; and feast on world-class gastronomy, celebrating the best of its regional bounty.</p>
+
+      </div>
+
+      <div id="explore-button-wrapper">
+        <a href="#" class="explore-btn">
+          <span>EXPLORE Turkey</span>
+          <span class="explore-btn-icon-wrapper">
+            <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <div id="preview-list" class="scrollbar-hide">
+      </div>
+    </div>
+  </div>
+  <!-- latest tour packages -->
+  <section class="mix-dests container" id="latest-packages">
+    <div class="md-head text-center mb-4">
+      <h2 class="md-title">Latest Tour Packages</h2>
+      <p class="md-sub">Check out for the latest Tour Packages on Rawabi holidays packages.</p>
+      <!-- no pills wanted -->
+    </div>
+
+    <div class="md-grid">
+      <!-- 1 -->
+      <article class="md-card ratio-1x1">
+        <img src="assets/images/download (18).jpeg" alt="Terraced fields in Noriva">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Calicut – Wayanad – Ooty</h5>
+            <span>Malabar DMC</span>
+            <p class="md-desc">Kozhikode, The Harbour of Honesty was once the capital of powerful Zamorins and an important trading centre in the Malabar region. Wayanad an absolute stress…</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 (tall) -->
+      <article class="md-card ratio-4x5">
+        <img src="assets/images/Maldives Crystal Beach Art - Maldives_ Artful Crystal Beach Escape.jpeg" alt="Crystal beach Maldives">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Salalah, Oman</h5>
+            <span>Asian Packages</span>
+            <p class="md-desc">Ziyarah Package If you’re interested in exploring the rich history and culture of Salalah, Oman, you might be wondering which prophet tombs you can find…</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 (wide) -->
+      <article class="md-card ratio-16x9">
+        <img src="assets/images/Maldives Guide_ Where To Stay, What To Do & How To Save.jpeg" alt="Island walkway Maldives">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Azure Walkway</h5>
+            <span>Indian Ocean</span>
+            <p class="md-desc">Stroll long wooden piers floating over turquoise seas with rays gliding beneath your feet.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="md-card ratio-1x1">
+        <img src="assets/images/download (19).jpeg" alt="European lakeside town">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Alpine Port</h5>
+            <span>Europe</span>
+            <p class="md-desc">Cobbled lanes, alpine waters and pastel harbors—romance framed by mountain peaks.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 (tall) -->
+      <article class="md-card ratio-4x5">
+        <img src="assets/images/The Ultimate Guide to Cherry Blossom Festivals Across Japan.jpeg" alt="Cherry blossoms Japan">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Sakura Streets</h5>
+            <span>Japan</span>
+            <p class="md-desc">Walk beneath clouds of pink blossom and discover quiet shrines tucked between lantern-lit alleys.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 (wide) -->
+      <article class="md-card ratio-16x9">
+        <img src="assets/images/Overwater Bungalows in the Maldives.jpeg" alt="Overwater bungalows">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Lagoon Villas</h5>
+            <span>Tropical Isles</span>
+            <p class="md-desc">Wake to the sound of soft waves and dive into clear waters right from your villa deck.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="md-card ratio-4x5">
+        <img src="assets/images/download (20).jpeg" alt="Sri Lankan rock view">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Sigiriya Vista</h5>
+            <span>Sri Lanka</span>
+            <p class="md-desc">Ancient citadels, lush forests and sweeping climbs—adventure carved in stone.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8 (tall) -->
+      <article class="md-card ratio-1x1">
+        <img src="assets/images/download (21).jpeg" alt="Tropical beach waterfall">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Hidden Falls</h5>
+            <span>Island Escape</span>
+            <p class="md-desc">A secret cove where a waterfall meets the sea—take a dip where freshwater kisses the tide.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="md-card ratio-16x9">
+        <img src="assets/images/landscape.jpeg" alt="California coast">
+        <div class="md-overlay">
+          <div class="md-content">
+            <h5>Pacific Drive</h5>
+            <span>California</span>
+            <p class="md-desc">Golden light, rugged cliffs and a road that curves between ocean and sky.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+<!-- contact us -->
+ <!-- ✈️ Contact Section -->
+  <section class="contact-section" id="contact">
+
+    <!-- Plane -->
+    <img src="assets/images/plane-1.png" class="plane" alt="Flying Plane">
+
+    <!-- Clouds -->
+    <img src="assets/images/loud.png" class="cloud" alt="Cloud">
+    <img src="assets/images/loud.png" class="cloud" alt="Cloud">
+    <img src="assets/images/loud.png" class="cloud" alt="Cloud">
+
+    <!-- Side Demo Travel Images -->
+    <img src="assets/images/download (21).jpeg" class="side-img img1" alt="Travel Beach">
+    <img src="assets/images/download (22).jpeg" class="side-img img2" alt="Ocean View">
+    <!-- <img src="https://images.unsplash.com/photo-1502920514313-52581002a659?auto=format&fit=crop&w=400&q=80" class="side-img img3" alt="Traveler"> -->
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" class="side-img img4" alt="Plane Window">
+
+    <!-- Map SVG -->
+    <img src="assets/images/map.png" class="map-line" alt="World Map">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+          <div class="contact-box text-center">
+            <h2 class="contact-title mb-2">Plan Your Dream Journey</h2>
+            <p class="contact-sub">
+              Connect with our travel experts — we’ll turn your travel dreams into unforgettable experiences.
+            </p>
+
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Phone Number">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Preferred Destination">
+                </div>
+                <div class="col-12">
+                  <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <div class="col-12 text-center">
+                  <button type="submit" class="btn-send mt-3">Send Message</button>
+                </div>
+              </div>
+            </form>
+
+            <div class="text-center mt-4 text-secondary d-flex justify-content-center">
+              <p class="d-flex flex-column m-4"><i class="fa-solid fa-location-dot me-2"></i>  Kozhikode, India</p>
+              <p class="d-flex flex-column m-4"><i class="fa-solid fa-phone me-2"></i> +91 9544 183 344</p>
+              <p class="d-flex flex-column m-4"><i class="fa-solid fa-envelope me-2"></i> ticketing@rawabi.biz</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL SECTION -->
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left side -->
+        <div class="col-lg-6 col-md-12 mb-5 mb-lg-0">
+          <div class="sub-title">What They Say —</div>
+          <h2 class="section-title"><b>What Our Customer</b><br>Say About Us</h2>
+
+          <div class="owl-carousel owl-theme">
+            <div class="testimonial-box">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=1" alt="">
+                <div>
+                  <h6>Park Tayeng</h6>
+                  <span>Travel Enthusiast</span>
+                </div>
+              </div>
+              <p class="testimonial-text">“This platform is very helpful because there are many beautiful destinations
+                here and this platform really helps me in finding beautiful destinations and also very good service so I
+                really like to use it when traveling with my family.”</p>
+              <div class="stars">★★★★★</div>
+            </div>
+
+            <div class="testimonial-box">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=2" alt="">
+                <div>
+                  <h6>Maria Gomez</h6>
+                  <span>Adventure Blogger</span>
+                </div>
+              </div>
+              <p class="testimonial-text">“Excellent travel experience! The platform is so easy to use and always helps
+                me find great destinations.”</p>
+              <div class="stars">★★★★★</div>
+            </div>
+
+            <div class="testimonial-box">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=3" alt="">
+                <div>
+                  <h6>John Smith</h6>
+                  <span>Photographer</span>
+                </div>
+              </div>
+              <p class="testimonial-text">“I found some of the most amazing places through this site. It’s now my go-to
+                platform for planning trips.”</p>
+              <div class="stars">★★★★☆</div>
+            </div>
+
+            <div class="testimonial-box">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=4" alt="">
+                <div>
+                  <h6>Aisha Khan</h6>
+                  <span>Solo Traveler</span>
+                </div>
+              </div>
+              <p class="testimonial-text">“Super easy booking and excellent support team. I love using it for my solo
+                adventures.”</p>
+              <div class="stars">★★★★★</div>
+            </div>
+
+            <div class="testimonial-box">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=5" alt="">
+                <div>
+                  <h6>Michael Brown</h6>
+                  <span>Family Traveler</span>
+                </div>
+              </div>
+              <p class="testimonial-text">“My family loved every trip we booked here! The process is smooth and
+                stress-free.”</p>
+              <div class="stars">★★★★★</div>
+            </div>
+
+            <div class="testimonial-box">
+              <div class="testimonial-user">
+                <img src="https://i.pravatar.cc/100?img=6" alt="">
+                <div>
+                  <h6>Emma Lee</h6>
+                  <span>Travel Vlogger</span>
+                </div>
+              </div>
+              <p class="testimonial-text">“Great recommendations and deals. The best travel website I’ve ever used.”</p>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side image -->
+        <div class="col-lg-6 col-md-12 right-image">
+          <img src="assets/images/testimonial-right img.png" alt="testimonial image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer Section ===== -->
+  <footer class="footer position-relative text-white">
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline class="footer-video">
+      <source src="assets/videos/footer.mp4" type="video/mp4">
+    </video>
+    <div class="footer-overlay" aria-hidden="true"></div>
+
+    <!-- 🌊 Top Divider Wave -->
+    <div class="footer-divider">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z"></path>
+      </svg>
+    </div>
+
+    <div class="container footer-content position-relative">
+      <!-- Newsletter Section -->
+      <div class="text-center mb-5">
+        <h5 class="text-uppercase mb-3 mt-5">Keep in Touch</h5>
+        <h2 class="fw-bold mb-4">Travel with Us</h2>
+        <form class="d-flex justify-content-center align-items-center">
+          <input type="email" class="form-control w-25 me-2 rounded-pill" placeholder="Enter your email">
+          <button class="btn btn-info rounded-pill px-4">Send</button>
+        </form>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="row text-start text-md-left">
+        <div class="col-md-5 mb-4">
+          <h4 class="fw-bold mb-3"><i class="fa-solid fa-plane-departure me-2"></i>Rawabi</h4>
+          <p class="w-75">Explore the world with us — from exotic destinations to luxurious stays, we make your journeys unforgettable.</p>
+          <div class="social-icons mt-3">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-2 mb-2">
+          <h5 class="fw-bold mb-3">Our Agency</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Insurance</a></li>
+            <li><a href="#">Tourism</a></li>
+            <li><a href="#">Payment</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-2 mb-2">
+          <h5 class="fw-bold mb-3">Partners</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Booking</a></li>
+            <li><a href="#">RentalCars</a></li>
+            <li><a href="#">HostelWorld</a></li>
+            <li><a href="#">TripAdvisor</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 mb-2">
+          <h5 class="fw-bold mb-3">Top Destinations</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">London</a></li>
+            <li><a href="#">California</a></li>
+            <li><a href="#">Europe</a></li>
+            <li><a href="#">Oceania</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="bg-light">
+
+      <div class="text-center small mt-3">
+        <span>© 2025 Rawabi. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <!-- about -->
+
+  <script>
+    // HERO2 slider logic (exact stacked transition)
+    (function(){
+      const slide = document.querySelector('.hero2-slide');
+      const prev = document.querySelector('.hero2-prev');
+      const next = document.querySelector('.hero2-next');
+      if (!slide) return;
+
+      function doNext(){
+        const items = slide.querySelectorAll('.hero2-item');
+        if (items.length < 2) return;
+        slide.appendChild(items[0]);
+      }
+      function doPrev(){
+        const items = slide.querySelectorAll('.hero2-item');
+        if (!items.length) return;
+        slide.prepend(items[items.length - 1]);
+      }
+      next?.addEventListener('click', doNext);
+      prev?.addEventListener('click', doPrev);
+
+      // auto-advance every 3s
+      setInterval(doNext, 3000);
+    })();
+  </script>
+
+  <script>
+    // Mobile off-canvas navbar (slide in from right)
+    (function(){
+      const toggle = document.getElementById('home-nav-toggle');
+      const menu = document.getElementById('home-nav-menu');
+      if (!toggle || !menu) return;
+
+      // Create dim overlay once
+      let dim = document.querySelector('.home-nav-dim');
+      if (!dim) {
+        dim = document.createElement('div');
+        dim.className = 'home-nav-dim';
+        document.body.appendChild(dim);
+      }
+
+      function openMenu(){
+        menu.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        dim.classList.add('is-visible');
+        document.body.classList.add('nav-open');
+      }
+      function closeMenu(){
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        dim.classList.remove('is-visible');
+        document.body.classList.remove('nav-open');
+      }
+      function toggleMenu(){
+        if (menu.classList.contains('is-open')) closeMenu(); else openMenu();
+      }
+
+      toggle.addEventListener('click', toggleMenu);
+      dim.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeMenu(); });
+    })();
+  </script>
+
+  <script>
+    // Hero Background Slider: exact transition logic (scoped)
+    (function(){
+      const slider = document.getElementById('hero-bg-slider');
+      if (!slider) return;
+      const track = slider.querySelector('.hero-bg-slide');
+      const nextBtn = slider.querySelector('.hero-bg-next');
+      const prevBtn = slider.querySelector('.hero-bg-prev');
+
+      function next() {
+        const items = track.querySelectorAll('.hero-bg-item');
+        if (items.length === 0) return;
+        track.appendChild(items[0]);
+      }
+      function prev() {
+        const items = track.querySelectorAll('.hero-bg-item');
+        if (items.length === 0) return;
+        track.prepend(items[items.length - 1]);
+      }
+
+      nextBtn?.addEventListener('click', next);
+      prevBtn?.addEventListener('click', prev);
+
+      // expose small API for other scripts to sync
+      window.__heroBgSlider = { next, prev, goto(index){
+        const items = Array.from(track.querySelectorAll('.hero-bg-item'));
+        // rotate until desired item is second (matching content slide pattern)
+        const target = ((index % items.length) + items.length) % items.length;
+        // goal: make item at position target become second child
+        let safety = 0;
+        while (safety < items.length && Array.from(track.children)[1] !== items[target]) {
+          track.appendChild(track.firstElementChild);
+          safety++;
+        }
+      }};
+    })();
+  </script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".about-images img", {
+      scrollTrigger: { trigger: ".about-section", start: "top 80%" },
+      y: 80,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    gsap.from(".about-content", {
+      scrollTrigger: { trigger: ".about-content", start: "top 80%" },
+      x: 100,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    gsap.from(".feature-box", {
+      scrollTrigger: { trigger: ".features-section", start: "top 85%" },
+      y: 60,
+      opacity: 0,
+      stagger: 0.25,
+      duration: 1,
+      ease: "power3.out"
+    });
+  </script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(".plane-img",
+      {
+        x: -180,
+        y: 70,
+        scale: 0.4,
+        opacity: 0,
+        rotate: -10
+      },
+      {
+        x: 0,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        rotate: 0,
+        duration: 3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#travel-section",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  </script>
+
+  <script>
+    const DURATION = 3000;
+    let currentIndex = 0;
+    let intervalId;
+
+    const mainImage = document.getElementById('main-image');
+    const mainTitle = document.getElementById('main-title-text');
+    const descriptionText = document.getElementById('description-text');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const previewList = document.getElementById('preview-list');
+    const progressLine = document.getElementById('progress-line');
+
+    const slides = [
+      {
+        number: 1,
+        subtitle: 'Fall in love with',
+        title: 'Turkey',
+        description: 'Experience the ancient empires that have left their mark in world-famous ruins; immerse yourself in blockbuster scenery by sea, land and air; and feast on world-class gastronomy, celebrating the best of its regional bounty.',
+        mainImageUrl: 'assets/images/download (18).jpeg',
+        previewImageUrl: 'assets/images/download (18).jpeg',
+        previewTitle: 'Seoul City',
+      },
+      {
+        number: 2,
+        subtitle: 'Discover the heart of',
+        title: 'Seoul City',
+        description: 'Seoul, the vibrant capital, is a dynamic blend of ancient history and cutting-edge technology. Explore historic palaces, shop in Myeongdong, and experience the famous K-Pop culture firsthand.',
+        mainImageUrl: 'assets/images/download (19).jpeg',
+        previewImageUrl: 'assets/images/download (19).jpeg',
+        previewTitle: 'Seoraksan Mountain',
+      },
+      {
+        number: 3,
+        subtitle: 'Hike the majestic',
+        title: 'Seoraksan Mountain',
+        description: 'Seoraksan National Park is renowned for its stunning, dramatic landscapes, especially during the autumn season. It offers challenging hikes and serene views of granite peaks and waterfalls.',
+        mainImageUrl: 'assets/images/Maldives Crystal Beach Art - Maldives_ Artful Crystal Beach Escape.jpeg',
+        previewImageUrl: 'assets/images/Maldives Crystal Beach Art - Maldives_ Artful Crystal Beach Escape.jpeg',
+        previewTitle: 'Haedong Yonggungsa',
+      },
+      {
+        number: 4,
+        subtitle: 'Visit the seaside',
+        title: 'Haedong Yonggungsa',
+        description: 'This extraordinary temple is one of the few located right on the ocean shore. Its breathtaking location makes it a favorite spot for tourists seeking both spiritual solace and stunning coastal views.',
+        mainImageUrl: 'assets/images/Maldives Guide_ Where To Stay, What To Do & How To Save.jpeg',
+        previewImageUrl: 'assets/images/Maldives Guide_ Where To Stay, What To Do & How To Save.jpeg',
+        previewTitle: 'Busan Shoreline',
+      }
+    ];
+
+    const formatNumber = (num) => String(num).padStart(2, '0');
+
+    function animateProgress() {
+      gsap.killTweensOf(progressLine);
+      gsap.set(progressLine, { scaleX: 0 });
+
+      gsap.to(progressLine, {
+        scaleX: 1,
+        duration: DURATION / 1000,
+        ease: 'linear',
+      });
+    }
+
+    function updateCarousel(newIndex) {
+      clearInterval(intervalId);
+      gsap.killTweensOf(progressLine);
+
+      newIndex = (newIndex + slides.length) % slides.length;
+      const newSlide = slides[newIndex];
+
+      const exploreBtnSpan = document.querySelector('.explore-btn span:first-child');
+
+      gsap.timeline()
+        .to([mainTitle, descriptionText, exploreBtnSpan], { opacity: 0, y: 10, duration: 0.3 })
+        .call(() => {
+          mainTitle.textContent = newSlide.title;
+          descriptionText.textContent = newSlide.description;
+          counter.textContent = formatNumber(newSlide.number);
+          exploreBtnSpan.textContent = `EXPLORE ${newSlide.title.toUpperCase().replace(/\s/g, ' ')}`;
+        })
+        .to([mainTitle, descriptionText, exploreBtnSpan], { opacity: 1, y: 0, duration: 0.5 });
+
+      gsap.to(mainImage, {
+        opacity: 0, duration: 0.4, onComplete: () => {
+          mainImage.src = newSlide.mainImageUrl;
+          gsap.to(mainImage, { opacity: 1, duration: 0.6 });
+        }
+      });
+
+      // Sync hero background slider to the same index (keeps full-bleed transition in hero)
+      if (window.__heroBgSlider && typeof window.__heroBgSlider.goto === 'function') {
+        window.__heroBgSlider.goto(newIndex);
+      }
+
+      document.querySelectorAll('.preview-item').forEach((item, index) => {
+        item.classList.remove('active');
+        if (index === newIndex) {
+          item.classList.add('active');
+          previewList.scrollTo({
+            left: item.offsetLeft - previewList.offsetWidth / 2 + item.offsetWidth / 2,
+            behavior: 'smooth'
+          });
+        }
+      });
+
+      currentIndex = newIndex;
+
+      setTimeout(() => {
+        startAutoAdvance();
+      }, 1000);
+    }
+
+    function autoAdvance() {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      updateCarousel(nextIndex);
+      animateProgress();
+    }
+
+    function startAutoAdvance() {
+      animateProgress();
+      intervalId = setInterval(autoAdvance, DURATION);
+    }
+
+    function initializePreviews() {
+      slides.forEach((slide, index) => {
+        const item = document.createElement('div');
+        item.className = `preview-item ${index === currentIndex ? 'active' : ''}`;
+        item.dataset.index = index;
+
+        const previewImgSrc = slide.previewImageUrl;
+
+        item.innerHTML = `
+                    <img src="${previewImgSrc}" alt="${slide.previewTitle}">
+                    <div class="preview-item-content">
+                        <p class="preview-item-title">${slide.previewTitle}</p>
+                    </div>
+                `;
+
+        item.addEventListener('click', () => {
+          if (index !== currentIndex) {
+            updateCarousel(index);
+          }
+        });
+        previewList.appendChild(item);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializePreviews();
+
+      updateCarousel(0);
+
+      prevBtn.addEventListener('click', () => {
+        updateCarousel(currentIndex - 1);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        updateCarousel(currentIndex + 1);
+      });
+    });
+
+    function base64ToArrayBuffer(base64) {
+      const binaryString = atob(base64);
+      const len = binaryString.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      return bytes.buffer;
+    }
+  </script>
+  <!-- testimonial -->
+
+
+
+  <script>
+    $(document).ready(function () {
+      // Top Destinations carousel
+      const $top = $('.top-dest-carousel');
+      $top.owlCarousel({
+        loop: true,
+        margin: 24,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        smartSpeed: 650,
+        responsive: {
+          0:   { items: 3 },
+          576: { items: 3 },
+          992: { items: 3 }
+        }
+      });
+      $('.td-prev').on('click', function(){ $top.trigger('prev.owl.carousel'); });
+      $('.td-next').on('click', function(){ $top.trigger('next.owl.carousel'); });
+
+      // Testimonial carousel (separate instance)
+      $('.testimonial-section .owl-carousel').owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 2500,
+        autoplayHoverPause: true,
+        items: 1,
+        animateOut: 'fadeOut',
+        smartSpeed: 600
+      });
+
+      // Partners carousel (endless loop)
+      $('.partners-carousel').owlCarousel({
+        loop: true,
+        margin: 24,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 1800,
+        autoplaySpeed: 650,
+        autoplayHoverPause: false,
+        slideTransition: 'linear',
+        responsive: {
+          0:   { items: 2 },
+          576: { items: 3 },
+          992: { items: 4 }
+        }
+      });
+    });
+  </script>
+
+  <!-- Latest Tour Packages: mobile Load More control (non-intrusive) -->
+  <script>
+    (function(){
+      const isMobile = () => window.innerWidth <= 575;
+      const grid = document.querySelector('.mix-dests .md-grid');
+      if (!grid) return;
+
+      // Create a button dynamically to avoid changing HTML markup
+      let btn = document.getElementById('md-load-more');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.id = 'md-load-more';
+        btn.className = 'btn-dest-more';
+        btn.textContent = 'Load More';
+        // place button after the grid
+        const section = document.getElementById('latest-packages');
+        section && section.appendChild(btn);
+      }
+
+      function applyMdVisibility() {
+        const cards = Array.from(grid.querySelectorAll('.md-card'));
+        // reset all
+        cards.forEach(c => c.classList.remove('hidden'));
+
+        if (isMobile()) {
+          // show only first 4 on small screens
+          cards.forEach((c, i) => { if (i >= 4) c.classList.add('hidden'); });
+          const hiddenCount = cards.filter(c => c.classList.contains('hidden')).length;
+          btn.style.display = hiddenCount > 0 ? 'inline-block' : 'none';
+        } else {
+          btn.style.display = 'none';
+        }
+      }
+
+      function revealAllMd() {
+        grid.querySelectorAll('.md-card.hidden').forEach(c => c.classList.remove('hidden'));
+        btn.style.display = 'none';
+      }
+
+      btn.addEventListener('click', revealAllMd);
+      window.addEventListener('resize', () => {
+        clearTimeout(window.__mdResizeT);
+        window.__mdResizeT = setTimeout(applyMdVisibility, 150);
+      });
+
+      // initialize on DOMContentLoaded order ensures this runs after grid exists
+      applyMdVisibility();
+    })();
+  </script>
+
+  <script>
+    // Destinations: responsive initial counts + Load More
+    (function () {
+      const grid = document.getElementById('destinations-grid');
+      if (!grid) return;
+      const btn = document.getElementById('destinations-load-more');
+
+      function applyInitialVisibility() {
+        const cards = Array.from(grid.querySelectorAll('.destination-card'));
+        // reset
+        cards.forEach(c => c.classList.remove('hidden'));
+
+        const w = window.innerWidth;
+        let showCount;
+        if (w <= 575) {
+          // mobile: show 3
+          showCount = 3;
+        } else if (w <= 992) {
+          // tablet: show 4 (2 x 2)
+          showCount = 4;
+        } else {
+          // desktop: show all 6
+          showCount = cards.length;
+        }
+
+        cards.forEach((c, i) => {
+          if (i >= showCount) c.classList.add('hidden');
+        });
+
+        // button label/visibility
+        const hiddenCount = cards.filter(c => c.classList.contains('hidden')).length;
+        if (hiddenCount === 0) {
+          btn.style.display = 'none';
+        } else {
+          btn.style.display = 'inline-block';
+          btn.textContent = w <= 575 ? 'Load More' : 'More Packages';
+        }
+      }
+
+      function revealAll() {
+        grid.querySelectorAll('.destination-card.hidden').forEach(c => c.classList.remove('hidden'));
+        btn.style.display = 'none';
+      }
+
+      btn?.addEventListener('click', revealAll);
+
+      window.addEventListener('resize', () => {
+        // Debounce minimal
+        clearTimeout(window.__destResizeT);
+        window.__destResizeT = setTimeout(applyInitialVisibility, 150);
+      });
+
+      // init
+      applyInitialVisibility();
+    })();
+  </script>
+<!-- indian package -->
+ <script>
+ class AccordionSlider {
+	constructor() {
+		this.slides = document.querySelectorAll(".slide");
+		this.prevBtn = document.querySelector(".nav-prev");
+		this.nextBtn = document.querySelector(".nav-next");
+		this.currentIndex = -1;
+
+		this.init();
+	}
+
+	init() {
+		this.slides.forEach((slide, index) => {
+			slide.addEventListener("click", () => this.setActiveSlide(index));
+		});
+
+		this.prevBtn.addEventListener("click", () => this.previousSlide());
+		this.nextBtn.addEventListener("click", () => this.nextSlide());
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "ArrowLeft") this.previousSlide();
+			if (e.key === "ArrowRight") this.nextSlide();
+		});
+	}
+
+	setActiveSlide(index) {
+		if (this.currentIndex === index) {
+			this.slides.forEach((slide) => slide.classList.remove("active"));
+			this.currentIndex = -1;
+		} else {
+			this.slides.forEach((slide) => slide.classList.remove("active"));
+			this.slides[index].classList.add("active");
+			this.currentIndex = index;
+		}
+	}
+
+	nextSlide() {
+		const nextIndex =
+			this.currentIndex === -1 ? 0 : (this.currentIndex + 1) % this.slides.length;
+		this.setActiveSlide(nextIndex);
+	}
+
+	previousSlide() {
+		const prevIndex =
+			this.currentIndex === -1
+				? this.slides.length - 1
+				: (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+		this.setActiveSlide(prevIndex);
+	}
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	new AccordionSlider();
+});
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const carouselTrack = document.getElementById('card-carousel');
+  const dynamicBgImg = document.getElementById('dynamic-bg-img');
+        const homePreloader = document.getElementById('home-preloader');
+        const navToggle = document.getElementById('home-nav-toggle');
+        const navMenu = document.getElementById('home-nav-menu');
+        
+
+        // --- Preloader: show for 3s, then fade out ---
+        setTimeout(() => {
+            if (homePreloader) {
+                homePreloader.classList.add('home-preloader--hide');
+                setTimeout(() => homePreloader.remove(), 550);
+            }
+        }, 3000);
+
+        // --- Nav toggle (mobile) ---
+    // handled by the new off-canvas navbar script above
+
+  // --- Cards / Carousel setup (old hero) ---
+    if (!carouselTrack) {
+    return; // old hero removed, skip this block but keep nav/preloader
+    }
+        const allCardsInTrack = Array.from(carouselTrack.querySelectorAll('.trip-card'));
+        const originalCards = allCardsInTrack.slice(0, 4);
+        const cardCount = originalCards.length;
+        const cardWidth = 200; // 180px + 20px gap
+        let currentIndex = 0;
+    let carouselTimer = null;
+
+        // Clone first few cards for loop
+        const clonesNeeded = 3;
+        for (let i = 0; i < clonesNeeded; i++) {
+            const clone = originalCards[i].cloneNode(true);
+            clone.classList.add('clone');
+            carouselTrack.appendChild(clone);
+        }
+
+    // Transition helper: expand from the card's image position to the hero background
+    function playExpandFromCard(newSrc, fromRect) {
+            const heroImgRect = dynamicBgImg.getBoundingClientRect();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'home-hero-transition';
+            const overlayImg = document.createElement('img');
+            overlayImg.src = newSrc;
+            overlay.appendChild(overlayImg);
+      document.body.appendChild(overlay);
+
+            // Start at preview position/size (fallback to small center if not available)
+      if (fromRect) {
+                overlay.style.top = fromRect.top + 'px';
+                overlay.style.left = fromRect.left + 'px';
+                overlay.style.width = fromRect.width + 'px';
+                overlay.style.height = fromRect.height + 'px';
+            } else {
+                const vw = Math.min(window.innerWidth * 0.3, 200);
+                const vh = vw * 0.66;
+                overlay.style.top = (window.innerHeight/2 - vh/2) + 'px';
+                overlay.style.left = (window.innerWidth/2 - vw/2) + 'px';
+                overlay.style.width = vw + 'px';
+                overlay.style.height = vh + 'px';
+            }
+
+            // Force style calc
+            overlay.getBoundingClientRect();
+
+            // Animate to hero image bounds
+            requestAnimationFrame(() => {
+                overlay.style.top = heroImgRect.top + 'px';
+                overlay.style.left = heroImgRect.left + 'px';
+                overlay.style.width = heroImgRect.width + 'px';
+                overlay.style.height = heroImgRect.height + 'px';
+                overlay.style.borderRadius = '0px';
+            });
+
+            // After transition completes, swap bg and remove overlay
+            setTimeout(() => {
+                dynamicBgImg.style.opacity = '0';
+                dynamicBgImg.addEventListener('transitionend', function handler(){
+                    dynamicBgImg.removeEventListener('transitionend', handler);
+                });
+                dynamicBgImg.src = newSrc;
+                // brief fade-in
+                setTimeout(() => { dynamicBgImg.style.opacity = '1'; }, 50);
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.remove(), 350);
+            }, 620);
+        }
+
+        function updateActiveState(index) {
+            const actualIndex = index % cardCount;
+            const nextCard = originalCards[actualIndex];
+            const nextBgSrc = nextCard.getAttribute('data-bg-img');
+
+      // Transition effect: from the card image to the hero background
+      const imgEl = nextCard.querySelector('img');
+      const fromRect = imgEl ? imgEl.getBoundingClientRect() : null;
+      playExpandFromCard(nextBgSrc, fromRect);
+
+      // Keep hero background slider in sync with the active card
+      if (window.__heroBgSlider && typeof window.__heroBgSlider.goto === 'function') {
+        window.__heroBgSlider.goto(actualIndex);
+      }
+
+            // Active card border
+            document.querySelector('.trip-card.active')?.classList.remove('active');
+            nextCard.classList.add('active');
+        }
+
+    // Initial: set hero without animation
+        if (originalCards.length > 0) {
+            const firstSrc = originalCards[0].getAttribute('data-bg-img');
+            dynamicBgImg.src = firstSrc;
+            originalCards[0].classList.add('active');
+        }
+
+    // Manual click: expand from clicked card image
+        allCardsInTrack.forEach(card => {
+            card.addEventListener('click', function() {
+                const newBgSrc = this.getAttribute('data-bg-img');
+        const imgEl = this.querySelector('img');
+        const fromRect = imgEl ? imgEl.getBoundingClientRect() : null;
+        playExpandFromCard(newBgSrc, fromRect);
+                if (!this.classList.contains('clone')) {
+                    document.querySelector('.trip-card.active')?.classList.remove('active');
+                    this.classList.add('active');
+          currentIndex = originalCards.indexOf(this);
+          // sync hero background slider with the clicked card index
+          if (window.__heroBgSlider && typeof window.__heroBgSlider.goto === 'function') {
+            window.__heroBgSlider.goto(currentIndex);
+          }
+                }
+            });
+        });
+
+        // Auto-scroll
+        function moveCarousel() {
+            currentIndex++;
+            updateActiveState(currentIndex);
+            carouselTrack.style.transition = 'transform 0.5s ease-in-out';
+            carouselTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+      if (currentIndex >= cardCount) {
+                setTimeout(() => {
+                    carouselTrack.style.transition = 'none';
+                    currentIndex = 0;
+                    carouselTrack.style.transform = 'translateX(0)';
+                    // Do not animate again immediately; just keep state consistent
+                    const firstSrc = originalCards[0].getAttribute('data-bg-img');
+                    dynamicBgImg.src = firstSrc;
+                    document.querySelector('.trip-card.active')?.classList.remove('active');
+                    originalCards[0].classList.add('active');
+                }, 500);
+            }
+        }
+
+        // Start auto-scroll after preloader hides so animations are visible
+        const startCarousel = () => {
+            if (carouselTimer) clearInterval(carouselTimer);
+            carouselTimer = setInterval(moveCarousel, 3500);
+        };
+
+        // If preloader exists, start after it; otherwise start immediately
+        if (homePreloader) {
+            setTimeout(startCarousel, 3600);
+        } else {
+            startCarousel();
+        }
+    });
+</script>
+
+<script>
+  // Stats divider counters: animate each time the section is visible
+  (function(){
+    const box = document.getElementById('stats-counters');
+    if(!box) return;
+    const counters = Array.from(box.querySelectorAll('.counter'));
+    const durations = { slow: 1600, fast: 900 };
+    let active = [];
+
+    function animate(el){
+      const target = parseInt(el.getAttribute('data-target'),10) || 0;
+      const start = 0;
+      const duration = target > 500 ? durations.slow : durations.fast;
+      const t0 = performance.now();
+      function step(t){
+        const p = Math.min(1, (t - t0)/duration);
+        const eased = 1 - Math.pow(1-p, 3); // easeOutCubic
+        const val = Math.floor(start + (target-start) * eased);
+        el.textContent = val.toLocaleString();
+        if(p < 1){
+          const id = requestAnimationFrame(step);
+          active.push(id);
+        }
+      }
+      const id = requestAnimationFrame(step);
+      active.push(id);
+    }
+
+    function reset(){
+      active.forEach(id=>cancelAnimationFrame(id));
+      active = [];
+      counters.forEach(c=>c.textContent = '0');
+    }
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          reset();
+          counters.forEach(animate);
+        } else if(entry.intersectionRatio === 0){
+          reset();
+        }
+      });
+    }, { threshold: [0, 0.45] });
+
+    observer.observe(box);
+  })();
+</script>
+</body>
+
+</html>
