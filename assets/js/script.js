@@ -442,6 +442,7 @@ class AccordionSlider {
 	init() {
 		this.slides.forEach((slide, index) => {
 			slide.addEventListener('click', () => this.setActiveSlide(index));
+			slide.addEventListener('mouseenter', () => this.setActiveSlide(index));
 		});
 		this.prevBtn?.addEventListener('click', () => this.previousSlide());
 		this.nextBtn?.addEventListener('click', () => this.nextSlide());
