@@ -79,45 +79,7 @@
 	document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 })();
 
-// 3) Hero Background Slider: exact transition logic (scoped) + API
-(function () {
-	const slider = document.getElementById('hero-bg-slider');
-	if (!slider) return;
-	const track = slider.querySelector('.hero-bg-slide');
-	const nextBtn = slider.querySelector('.hero-bg-next');
-	const prevBtn = slider.querySelector('.hero-bg-prev');
 
-	function next() {
-		const items = track.querySelectorAll('.hero-bg-item');
-		if (items.length === 0) return;
-		track.appendChild(items[0]);
-	}
-	function prev() {
-		const items = track.querySelectorAll('.hero-bg-item');
-		if (items.length === 0) return;
-		track.prepend(items[items.length - 1]);
-	}
-
-	nextBtn?.addEventListener('click', next);
-	prevBtn?.addEventListener('click', prev);
-
-	// Expose small API for other scripts to sync
-	window.__heroBgSlider = {
-		next,
-		prev,
-		goto(index) {
-			const items = Array.from(track.querySelectorAll('.hero-bg-item'));
-			if (!items.length) return;
-			const target = ((index % items.length) + items.length) % items.length;
-			// Rotate until desired item is second (matching content slide pattern)
-			let safety = 0;
-			while (safety < items.length && Array.from(track.children)[1] !== items[target]) {
-				track.appendChild(track.firstElementChild);
-				safety++;
-			}
-		}
-	};
-})();
 
 // 4) GSAP Scroll Animations (about/features)
 try {
