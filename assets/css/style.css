@@ -1,4 +1,4 @@
- body {
+body {
     background: #f7eded !important;
  }
  :root{
@@ -718,7 +718,7 @@
       padding: 15px 35px;
       flex-wrap: wrap;
       width: 90%;
-      max-width: 850px;
+      max-width: 950px;
     }
 
     .search-box .item {
@@ -1071,7 +1071,7 @@
         /* --- Preview List (Carousel Thumbnails) --- */
         #preview-list {
             margin-top: 2rem; 
-            overflow-x: auto;
+            overflow: auto;
             padding-bottom: 1rem; 
             display: flex;
             gap: 1rem; 
@@ -1396,9 +1396,9 @@
     }
 
     /* ===== Contact Card ===== */
-    .contact-box {
+     .contact-box {
       background: #ffffffc1;
-      /* backdrop-filter:blur(10px); */
+      backdrop-filter:blur(10px);
       border-radius: 25px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.1);
       padding: 3rem;
@@ -1959,8 +1959,8 @@
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 50px;
-	height: 50px;
+	width: 30px;
+	height: 0px;
 	background: rgba(255, 255, 255, 0.1);
 	border: none;
 	border-radius: 50%;
