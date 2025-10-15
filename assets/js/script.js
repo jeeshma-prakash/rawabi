@@ -41,7 +41,7 @@
 	prev?.addEventListener('click', doPrev);
 
 	// auto-advance every 3s
-	setInterval(doNext, 3000);
+	setInterval(doNext, 4000);
 })();
 
 // 2) Mobile off-canvas navbar (slide in from right)
