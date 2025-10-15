@@ -41,7 +41,7 @@
 	prev?.addEventListener('click', doPrev);
 
 	// auto-advance every 3s
-	setInterval(doNext, 4000);
+	setInterval(doNext, 3000);
 })();
 
 // 2) Mobile off-canvas navbar (slide in from right)
@@ -152,12 +152,12 @@ try {
 			description: 'Experience the ancient empires that have left their mark in world-famous ruins; immerse yourself in blockbuster scenery by sea, land and air; and feast on world-class gastronomy, celebrating the best of its regional bounty.',
 			mainImageUrl: 'assets/images/download (18).jpeg',
 			previewImageUrl: 'assets/images/download (18).jpeg',
-			previewTitle: 'Seoul City'
+			previewTitle: 'Vietnam'
 		},
 		{
 			number: 2,
 			subtitle: 'Discover the heart of',
-			title: 'Seoul City',
+			title: 'Vietnam',
 			description: 'Seoul, the vibrant capital, is a dynamic blend of ancient history and cutting-edge technology. Explore historic palaces, shop in Myeongdong, and experience the famous K-Pop culture firsthand.',
 			mainImageUrl: 'assets/images/download (19).jpeg',
 			previewImageUrl: 'assets/images/download (19).jpeg',
