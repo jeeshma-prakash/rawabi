@@ -276,15 +276,16 @@ try {
 			window.__heroBgSlider.goto(newIndex);
 		}
 
-		document.querySelectorAll('.preview-item').forEach((item, index) => {
-			item.classList.remove('active');
-			if (index === newIndex) {
-				item.classList.add('active');
-				previewList.scrollTo({
-					left: item.offsetLeft - previewList.offsetWidth / 2 + item.offsetWidth / 2,
-					behavior: 'smooth'
-				});
-			}
+		document.querySelectorAll('.preview-item').forEach((item, i) => {
+			const slideIndex = (currentIndex + 1 + i) % slides.length;
+			const slide = slides[slideIndex];
+			item.dataset.index = String(slideIndex);
+			const img = item.querySelector('img');
+			const title = item.querySelector('.preview-item-title');
+			if (img) img.src = slide.mainImageUrl;
+			if (img) img.alt = slide.title;
+			if (title) title.textContent = slide.title;
+			item.onclick = () => { updateCarousel(slideIndex); };
 		});
 
 		currentIndex = newIndex;
@@ -303,19 +304,20 @@ try {
 	}
 
 	function initializePreviews() {
-		slides.forEach((slide, index) => {
+		for (let i = 0; i < 3; i++) {
 			const item = document.createElement('div');
-			item.className = `preview-item ${index === currentIndex ? 'active' : ''}`;
-			item.dataset.index = String(index);
-			const previewImgSrc = slide.previewImageUrl;
+			item.className = 'preview-item';
+			item.dataset.index = String((currentIndex + 1 + i) % slides.length);
+			const slideIndex = (currentIndex + 1 + i) % slides.length;
+			const slide = slides[slideIndex];
 			item.innerHTML = `
-				<img src="${previewImgSrc}" alt="${slide.previewTitle}">
+				<img src="${slide.mainImageUrl}" alt="${slide.title}">
 				<div class="preview-item-content">
-					<p class="preview-item-title">${slide.previewTitle}</p>
+					<p class="preview-item-title">${slide.title}</p>
 				</div>`;
-			item.addEventListener('click', () => { if (index !== currentIndex) updateCarousel(index); });
+			item.addEventListener('click', () => { updateCarousel(slideIndex); });
 			previewList.appendChild(item);
-		});
+		}
 	}
 
 	document.addEventListener('DOMContentLoaded', () => {
