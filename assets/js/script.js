@@ -154,8 +154,8 @@ try {
 			description: 'Experience the ancient empires that have left their mark in world-famous ruins immerse yourself in blockbuster scenery by sea, land and air and feast on world-class gastronomy, celebrating the best of its regional bounty.',
 			price: '₹ 81,500',
 			duration: '5N/6D',
-			mainImageUrl: '../assets/images/worldturkey.jpeg',
-			previewImageUrl: '../assets/images/worldturkey.jpeg',
+			mainImageUrl: 'assets/images/worldturkey.jpeg',
+			previewImageUrl: 'assets/images/worldturkey.jpeg',
 			previewTitle: 'Vietnam'
 		},
 		{
@@ -165,8 +165,8 @@ try {
 			description: 'Vietnam is a land of contrasts. It is home to some of the most beautiful beach destinations in the world, like Da Nang, Nha Trang, or Phu Quoc Island, where crystal-clear waters and white sands create a tropical paradise.',
 			price: '₹ 81,500',
 			duration: '4N/5D',
-			mainImageUrl: '../assets/images/worldvietnam.jpeg',
-			previewImageUrl: '../assets/images/worldvietnam.jpeg',
+			mainImageUrl: 'assets/images/worldvietnam.jpeg',
+			previewImageUrl: 'assets/images/worldvietnam.jpeg',
 			previewTitle: 'Oman'
 		},
 		{
@@ -176,8 +176,8 @@ try {
 			description: 'Oman is the land of adventures, starting from exploring the Hoota Cave, going through the experience of zip-lining in Musandam Governorate. The Sultanate of Oman is globally renowned for its unique culture and rich heritage',
 			price: '₹ 85,000',
 			duration: '5N/6D',
-			mainImageUrl: '../assets/images/worldoman.jpeg',
-			previewImageUrl: '../assets/images/worldoman.jpeg',
+			mainImageUrl: 'assets/images/worldoman.jpeg',
+			previewImageUrl: 'assets/images/worldoman.jpeg',
 			previewTitle: 'Indonesia'
 		},
 		{
@@ -187,8 +187,8 @@ try {
 			description: 'Volcanic landscapes, beautiful beaches, exotic wildlife and a varied cultural heritage make this string of islands an appealing vacation destination. Indonesia is home to a wide range of religions, races and cultures.',
 			price: '₹ 64,000',
 			duration: '4N/5D',
-			mainImageUrl: '../assets/images/worldindonesia.jpeg',
-			previewImageUrl: '../assets/images/worldindonesia.jpeg',
+			mainImageUrl: 'assets/images/worldindonesia.jpeg',
+			previewImageUrl: 'assets/images/worldindonesia.jpeg',
 			previewTitle: 'Malaysia'
 		},
 		{
@@ -198,8 +198,8 @@ try {
 			description: 'Malay Peninsula and the island of Borneo. It’s known for its beaches, rainforests and colonial buildings, busy shopping districts such as Bukit Bintang and skyscrapers such as the iconic, 451m-tall Petronas Twin Towers',
 			price: '₹ 51,500',
 			duration: '3N/4D',
-			mainImageUrl: '../assets/images/worldmalaysia.jpeg',
-			previewImageUrl: '../assets/images/worldmalaysia.jpeg',
+			mainImageUrl: 'assets/images/worldmalaysia.jpeg',
+			previewImageUrl: 'assets/images/worldmalaysia.jpeg',
 			previewTitle: 'Thailand'
 		},
 		{
@@ -209,8 +209,8 @@ try {
 			description: 'Thailand is one of the world’s most renowned holiday destinations, with a wide variety of things to see and do, from culture, religion, food, nature, water, adventure, sports and also relaxing activities.',
 			price: '₹ 35,000',
 			duration: '2N/3D',
-			mainImageUrl: '../assets/images/worldthailand.jpeg',
-			previewImageUrl: '../assets/images/worldthailand.jpeg',
+			mainImageUrl: 'assets/images/worldthailand.jpeg',
+			previewImageUrl: 'assets/images/worldthailand.jpeg',
 			previewTitle: 'Turkey'
 		}
         
@@ -263,12 +263,13 @@ try {
 		try {
 			gsap.to(mainImage, {
 				opacity: 0, duration: 0.4, onComplete: () => {
-					mainImage.src = newSlide.mainImageUrl;
+					// Encode URL to be robust on GitHub Pages (spaces, special chars)
+					mainImage.src = encodeURI(newSlide.mainImageUrl);
 					try { gsap.to(mainImage, { opacity: 1, duration: 0.6 }); } catch (e) { mainImage.style.opacity = '1'; }
 				}
 			});
 		} catch (e) {
-			mainImage.src = newSlide.mainImageUrl;
+			mainImage.src = encodeURI(newSlide.mainImageUrl);
 		}
 
 		// Sync hero background slider to the same index
@@ -282,7 +283,7 @@ try {
 			item.dataset.index = String(slideIndex);
 			const img = item.querySelector('img');
 			const title = item.querySelector('.preview-item-title');
-			if (img) img.src = slide.mainImageUrl;
+			if (img) img.src = encodeURI(slide.mainImageUrl);
 			if (img) img.alt = slide.title;
 			if (title) title.textContent = slide.title;
 			item.onclick = () => { updateCarousel(slideIndex); };
@@ -311,7 +312,7 @@ try {
 			const slideIndex = (currentIndex + 1 + i) % slides.length;
 			const slide = slides[slideIndex];
 			item.innerHTML = `
-				<img src="${slide.mainImageUrl}" alt="${slide.title}">
+				<img src="${encodeURI(slide.mainImageUrl)}" alt="${slide.title}">
 				<div class="preview-item-content">
 					<p class="preview-item-title">${slide.title}</p>
 				</div>`;
