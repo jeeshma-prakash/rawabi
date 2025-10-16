@@ -165,7 +165,7 @@ try {
 			description: 'Vietnam is a land of contrasts. It is home to some of the most beautiful beach destinations in the world, like Da Nang, Nha Trang, or Phu Quoc Island, where crystal-clear waters and white sands create a tropical paradise.',
 			price: '₹ 81,500',
 			duration: '4N/5D',
-			mainImageUrl: 'assets/images/ooty.jpeg',
+			mainImageUrl: 'assets/images/worldvietnam.jpeg',
 			previewImageUrl: 'assets/images/worldvietnam.jpeg',
 			previewTitle: 'Oman'
 		},
@@ -198,8 +198,8 @@ try {
 			description: 'Malay Peninsula and the island of Borneo. It’s known for its beaches, rainforests and colonial buildings, busy shopping districts such as Bukit Bintang and skyscrapers such as the iconic, 451m-tall Petronas Twin Towers',
 			price: '₹ 51,500',
 			duration: '3N/4D',
-			mainImageUrl: 'assets/images/worldmalaysia.jpeg',
-			previewImageUrl: 'assets/images/worldmalaysia.jpeg',
+			mainImageUrl: 'assets/images/malasia-world.png',
+			previewImageUrl: 'assets/images/malasia-world.png',
 			previewTitle: 'Thailand'
 		},
 		{
