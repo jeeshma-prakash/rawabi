@@ -230,30 +230,55 @@ try {
 	function setImgSrcWithFallback(img, url, onLoadCb) {
 		if (!img || !url) return;
 		const candidates = [];
-		const u = url;
-		const pushUnique = (s) => { if (!candidates.includes(s)) candidates.push(s); };
-		pushUnique(u);
-		if (/\.jpeg$/i.test(u)) {
-			pushUnique(u.replace(/\.jpeg$/i, '.jpg'));
-			pushUnique(u.replace(/\.jpeg$/i, '.JPEG'));
-			pushUnique(u.replace(/\.jpeg$/i, '.JPG'));
-		} else if (/\.jpg$/i.test(u)) {
-			pushUnique(u.replace(/\.jpg$/i, '.jpeg'));
-			pushUnique(u.replace(/\.jpg$/i, '.JPG'));
-			pushUnique(u.replace(/\.jpg$/i, '.JPEG'));
-		}
+		const repoSeg = (window.location.pathname.split('/')[1] || '').trim();
+		const makeVariants = (baseUrl) => {
+			const list = [];
+			const push = (s) => { if (s && !list.includes(s)) list.push(s); };
+			push(baseUrl);
+			if (/\.jpeg$/i.test(baseUrl)) {
+				push(baseUrl.replace(/\.jpeg$/i, '.jpg'));
+				push(baseUrl.replace(/\.jpeg$/i, '.JPEG'));
+				push(baseUrl.replace(/\.jpeg$/i, '.JPG'));
+			} else if (/\.jpg$/i.test(baseUrl)) {
+				push(baseUrl.replace(/\.jpg$/i, '.jpeg'));
+				push(baseUrl.replace(/\.jpg$/i, '.JPG'));
+				push(baseUrl.replace(/\.jpg$/i, '.JPEG'));
+			}
+			return list;
+		};
+
+		// Build base URL candidates to handle GitHub Pages subpath (/repo) and root.
+		const raw = url.replace(/^\.\//, '');
+		const baseUrls = [];
+		baseUrls.push(raw); // as-is (relative)
+		baseUrls.push('./' + raw); // explicit relative
+		baseUrls.push('/' + raw); // root-based
+		if (repoSeg) baseUrls.push('/' + repoSeg + '/' + raw.replace(/^\//, '')); // project page base
+
+		// Attach a light cache-buster to avoid sticky CDN cache issues
+		const stamp = 'v=' + (window.__rawabiV || (window.__rawabiV = Date.now().toString().slice(-6)));
+		const withBuster = (u) => (u.includes('?') ? u + '&' + stamp : u + '?' + stamp);
+
+		baseUrls.forEach(bu => makeVariants(bu).forEach(v => candidates.push(withBuster(v))));
+
 		let i = 0;
 		const tryNext = () => {
-			if (i >= candidates.length) return; // give up silently
-			img.onerror = () => { i++; tryNext(); };
+			if (i >= candidates.length) {
+				try { console.warn('Image failed all candidates', { url, tried: candidates }); } catch (e) {}
+				return; // give up silently after logging
+			}
+			const nextUrl = candidates[i++];
+			img.onerror = () => {
+				try { console.debug('Image load failed, trying next', nextUrl); } catch (e) {}
+				tryNext();
+			};
 			img.onload = () => { if (typeof onLoadCb === 'function') onLoadCb(); };
-			img.src = candidates[i];
+			img.src = nextUrl;
 		};
 		tryNext();
 	}
 
 	function updateCarousel(newIndex) {
-		clearInterval(intervalId);
 		try { gsap.killTweensOf(progressLine); } catch (e) {}
 
 		newIndex = (newIndex + slides.length) % slides.length;
@@ -318,7 +343,6 @@ try {
 		});
 
 		currentIndex = newIndex;
-		setTimeout(() => { startAutoAdvance(); }, 1000);
 	}
 
 	function autoAdvance() {
@@ -328,6 +352,7 @@ try {
 	}
 
 	function startAutoAdvance() {
+		if (intervalId) return; // start only once
 		animateProgress();
 		intervalId = setInterval(autoAdvance, DURATION);
 	}
@@ -352,12 +377,19 @@ try {
 		}
 	}
 
-	document.addEventListener('DOMContentLoaded', () => {
+	function initCarousel() {
 		initializePreviews();
 		updateCarousel(0);
+		startAutoAdvance();
 		prevBtn?.addEventListener('click', () => updateCarousel(currentIndex - 1));
 		nextBtn?.addEventListener('click', () => updateCarousel(currentIndex + 1));
-	});
+	}
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initCarousel);
+	} else {
+		// DOM already loaded (common on fast CDNs / GitHub Pages)
+		initCarousel();
+	}
 
 	// Helper retained from original (unused here, can be used elsewhere)
 	function base64ToArrayBuffer(base64) {
