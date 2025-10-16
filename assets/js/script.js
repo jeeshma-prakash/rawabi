@@ -133,8 +133,6 @@ try {
 	let currentIndex = 0;
 	let intervalId;
 
-	const base = window.location.hostname === 'jeeshma-prakash.github.io' ? '/rawabi' : '';
-
 	const mainImage = document.getElementById('main-image');
 	const mainTitle = document.getElementById('main-title-text');
 	const descriptionText = document.getElementById('description-text');
@@ -156,8 +154,8 @@ try {
 			description: 'Experience the ancient empires that have left their mark in world-famous ruins immerse yourself in blockbuster scenery by sea, land and air and feast on world-class gastronomy, celebrating the best of its regional bounty.',
 			price: '₹ 81,500',
 			duration: '5N/6D',
-			mainImageUrl: base + '/assets/images/worldturkey.jpeg',
-			previewImageUrl: base + '/assets/images/worldturkey.jpeg',
+			mainImageUrl: 'assets/images/worldturkey.jpeg',
+			previewImageUrl: 'assets/images/worldturkey.jpeg',
 			previewTitle: 'Vietnam'
 		},
 		{
@@ -167,8 +165,8 @@ try {
 			description: 'Vietnam is a land of contrasts. It is home to some of the most beautiful beach destinations in the world, like Da Nang, Nha Trang, or Phu Quoc Island, where crystal-clear waters and white sands create a tropical paradise.',
 			price: '₹ 81,500',
 			duration: '4N/5D',
-			mainImageUrl: base + '/assets/images/worldvietnam.jpeg',
-			previewImageUrl: base + '/assets/images/worldvietnam.jpeg',
+			mainImageUrl: 'assets/images/worldvietnam.jpeg',
+			previewImageUrl: 'assets/images/worldvietnam.jpeg',
 			previewTitle: 'Oman'
 		},
 		{
@@ -178,8 +176,8 @@ try {
 			description: 'Oman is the land of adventures, starting from exploring the Hoota Cave, going through the experience of zip-lining in Musandam Governorate. The Sultanate of Oman is globally renowned for its unique culture and rich heritage',
 			price: '₹ 85,000',
 			duration: '5N/6D',
-			mainImageUrl: base + '/assets/images/worldoman.jpeg',
-			previewImageUrl: base + '/assets/images/worldoman.jpeg',
+			mainImageUrl: 'assets/images/worldoman.jpeg',
+			previewImageUrl: 'assets/images/worldoman.jpeg',
 			previewTitle: 'Indonesia'
 		},
 		{
@@ -189,8 +187,8 @@ try {
 			description: 'Volcanic landscapes, beautiful beaches, exotic wildlife and a varied cultural heritage make this string of islands an appealing vacation destination. Indonesia is home to a wide range of religions, races and cultures.',
 			price: '₹ 64,000',
 			duration: '4N/5D',
-			mainImageUrl: base + '/assets/images/worldindonesia.jpeg',
-			previewImageUrl: base + '/assets/images/worldindonesia.jpeg',
+			mainImageUrl: 'assets/images/worldindonesia.jpeg',
+			previewImageUrl: 'assets/images/worldindonesia.jpeg',
 			previewTitle: 'Malaysia'
 		},
 		{
@@ -200,8 +198,8 @@ try {
 			description: 'Malay Peninsula and the island of Borneo. It’s known for its beaches, rainforests and colonial buildings, busy shopping districts such as Bukit Bintang and skyscrapers such as the iconic, 451m-tall Petronas Twin Towers',
 			price: '₹ 51,500',
 			duration: '3N/4D',
-			mainImageUrl: base + '/assets/images/worldmalaysia.jpeg',
-			previewImageUrl: base + '/assets/images/worldmalaysia.jpeg',
+			mainImageUrl: 'assets/images/worldmalaysia.jpeg',
+			previewImageUrl: 'assets/images/worldmalaysia.jpeg',
 			previewTitle: 'Thailand'
 		},
 		{
@@ -211,8 +209,8 @@ try {
 			description: 'Thailand is one of the world’s most renowned holiday destinations, with a wide variety of things to see and do, from culture, religion, food, nature, water, adventure, sports and also relaxing activities.',
 			price: '₹ 35,000',
 			duration: '2N/3D',
-			mainImageUrl: base + '/assets/images/worldthailand.jpeg',
-			previewImageUrl: base + '/assets/images/worldthailand.jpeg',
+			mainImageUrl: 'assets/images/worldthailand.jpeg',
+			previewImageUrl: 'assets/images/worldthailand.jpeg',
 			previewTitle: 'Turkey'
 		}
         
@@ -226,6 +224,32 @@ try {
 			gsap.set(progressLine, { scaleX: 0 });
 			gsap.to(progressLine, { scaleX: 1, duration: DURATION / 1000, ease: 'linear' });
 		} catch (e) { /* if GSAP missing, skip progress anim */ }
+	}
+
+	// Helper: set img src with fallback between .jpeg / .jpg (and case variants)
+	function setImgSrcWithFallback(img, url, onLoadCb) {
+		if (!img || !url) return;
+		const candidates = [];
+		const u = url;
+		const pushUnique = (s) => { if (!candidates.includes(s)) candidates.push(s); };
+		pushUnique(u);
+		if (/\.jpeg$/i.test(u)) {
+			pushUnique(u.replace(/\.jpeg$/i, '.jpg'));
+			pushUnique(u.replace(/\.jpeg$/i, '.JPEG'));
+			pushUnique(u.replace(/\.jpeg$/i, '.JPG'));
+		} else if (/\.jpg$/i.test(u)) {
+			pushUnique(u.replace(/\.jpg$/i, '.jpeg'));
+			pushUnique(u.replace(/\.jpg$/i, '.JPG'));
+			pushUnique(u.replace(/\.jpg$/i, '.JPEG'));
+		}
+		let i = 0;
+		const tryNext = () => {
+			if (i >= candidates.length) return; // give up silently
+			img.onerror = () => { i++; tryNext(); };
+			img.onload = () => { if (typeof onLoadCb === 'function') onLoadCb(); };
+			img.src = candidates[i];
+		};
+		tryNext();
 	}
 
 	function updateCarousel(newIndex) {
@@ -261,16 +285,19 @@ try {
 			if (exploreBtnSpan) exploreBtnSpan.textContent = `EXPLORE ${newSlide.title.toUpperCase().replace(/\s/g, ' ')}`;
 		}
 
-		// Main image crossfade
+		// Main image crossfade with robust src fallback (.jpeg/.jpg)
 		try {
 			gsap.to(mainImage, {
-				opacity: 0, duration: 0.4, onComplete: () => {
-					mainImage.src = newSlide.mainImageUrl;
-					try { gsap.to(mainImage, { opacity: 1, duration: 0.6 }); } catch (e) { mainImage.style.opacity = '1'; }
+				opacity: 0,
+				duration: 0.4,
+				onComplete: () => {
+					setImgSrcWithFallback(mainImage, newSlide.mainImageUrl, () => {
+						try { gsap.to(mainImage, { opacity: 1, duration: 0.6 }); } catch (e) { mainImage.style.opacity = '1'; }
+					});
 				}
 			});
 		} catch (e) {
-			mainImage.src = newSlide.mainImageUrl;
+			setImgSrcWithFallback(mainImage, newSlide.mainImageUrl);
 		}
 
 		// Sync hero background slider to the same index
@@ -284,7 +311,7 @@ try {
 			item.dataset.index = String(slideIndex);
 			const img = item.querySelector('img');
 			const title = item.querySelector('.preview-item-title');
-			if (img) img.src = slide.mainImageUrl;
+			if (img) setImgSrcWithFallback(img, slide.mainImageUrl);
 			if (img) img.alt = slide.title;
 			if (title) title.textContent = slide.title;
 			item.onclick = () => { updateCarousel(slideIndex); };
@@ -313,12 +340,15 @@ try {
 			const slideIndex = (currentIndex + 1 + i) % slides.length;
 			const slide = slides[slideIndex];
 			item.innerHTML = `
-				<img src="${slide.mainImageUrl}" alt="${slide.title}">
+				<img alt="${slide.title}">
 				<div class="preview-item-content">
 					<p class="preview-item-title">${slide.title}</p>
 				</div>`;
 			item.addEventListener('click', () => { updateCarousel(slideIndex); });
 			previewList.appendChild(item);
+			// Apply robust src after element is in DOM (for correct onload behavior)
+			const imgEl = item.querySelector('img');
+			if (imgEl) setImgSrcWithFallback(imgEl, slide.mainImageUrl);
 		}
 	}
 
