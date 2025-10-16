@@ -136,51 +136,84 @@ try {
 	const mainImage = document.getElementById('main-image');
 	const mainTitle = document.getElementById('main-title-text');
 	const descriptionText = document.getElementById('description-text');
+	const priceText = document.getElementById('price-text');
+	const durationText = document.getElementById('duration-text');
 	const counter = document.getElementById('counter');
 	const prevBtn = document.getElementById('prev-btn');
 	const nextBtn = document.getElementById('next-btn');
 	const previewList = document.getElementById('preview-list');
 	const progressLine = document.getElementById('progress-line');
 
-	if (!mainImage || !mainTitle || !descriptionText || !counter || !previewList) return;
+	if (!mainImage || !mainTitle || !descriptionText || !priceText || !durationText || !counter || !previewList) return;
 
 	const slides = [
 		{
 			number: 1,
 			subtitle: 'Fall in love with',
 			title: 'Turkey',
-			description: 'Experience the ancient empires that have left their mark in world-famous ruins; immerse yourself in blockbuster scenery by sea, land and air; and feast on world-class gastronomy, celebrating the best of its regional bounty.',
-			mainImageUrl: 'assets/images/download (18).jpeg',
-			previewImageUrl: 'assets/images/download (18).jpeg',
+			description: 'Experience the ancient empires that have left their mark in world-famous ruins immerse yourself in blockbuster scenery by sea, land and air and feast on world-class gastronomy, celebrating the best of its regional bounty.',
+			price: '₹ 81,500',
+			duration: '5N/6D',
+			mainImageUrl: 'assets/images/world-turkey.jpeg',
+			previewImageUrl: 'assets/images/world-turkey.jpeg',
 			previewTitle: 'Vietnam'
 		},
 		{
 			number: 2,
 			subtitle: 'Discover the heart of',
 			title: 'Vietnam',
-			description: 'Seoul, the vibrant capital, is a dynamic blend of ancient history and cutting-edge technology. Explore historic palaces, shop in Myeongdong, and experience the famous K-Pop culture firsthand.',
-			mainImageUrl: 'assets/images/download (19).jpeg',
-			previewImageUrl: 'assets/images/download (19).jpeg',
-			previewTitle: 'Seoraksan Mountain'
+			description: 'Vietnam is a land of contrasts. It is home to some of the most beautiful beach destinations in the world, like Da Nang, Nha Trang, or Phu Quoc Island, where crystal-clear waters and white sands create a tropical paradise.',
+			price: '₹ 81,500',
+			duration: '4N/5D',
+			mainImageUrl: 'assets/images/world-vietnam.jpeg',
+			previewImageUrl: 'assets/images/world-vietnam.jpeg',
+			previewTitle: 'Oman'
 		},
 		{
 			number: 3,
 			subtitle: 'Hike the majestic',
-			title: 'Seoraksan Mountain',
-			description: 'Seoraksan National Park is renowned for its stunning, dramatic landscapes, especially during the autumn season. It offers challenging hikes and serene views of granite peaks and waterfalls.',
-			mainImageUrl: 'assets/images/Maldives Crystal Beach Art - Maldives_ Artful Crystal Beach Escape.jpeg',
-			previewImageUrl: 'assets/images/Maldives Crystal Beach Art - Maldives_ Artful Crystal Beach Escape.jpeg',
-			previewTitle: 'Haedong Yonggungsa'
+			title: 'Oman',
+			description: 'Oman is the land of adventures, starting from exploring the Hoota Cave, going through the experience of zip-lining in Musandam Governorate. The Sultanate of Oman is globally renowned for its unique culture and rich heritage',
+			price: '₹ 85,000',
+			duration: '5N/6D',
+			mainImageUrl: 'assets/images/world-oman.jpeg',
+			previewImageUrl: 'assets/images/world-oman.jpeg',
+			previewTitle: 'Indonesia'
 		},
 		{
 			number: 4,
 			subtitle: 'Visit the seaside',
-			title: 'Haedong Yonggungsa',
-			description: 'This extraordinary temple is one of the few located right on the ocean shore. Its breathtaking location makes it a favorite spot for tourists seeking both spiritual solace and stunning coastal views.',
-			mainImageUrl: 'assets/images/Maldives Guide_ Where To Stay, What To Do & How To Save.jpeg',
-			previewImageUrl: 'assets/images/Maldives Guide_ Where To Stay, What To Do & How To Save.jpeg',
-			previewTitle: 'Busan Shoreline'
+			title: 'Indonesia',
+			description: 'Volcanic landscapes, beautiful beaches, exotic wildlife and a varied cultural heritage make this string of islands an appealing vacation destination. Indonesia is home to a wide range of religions, races and cultures.',
+			price: '₹ 64,000',
+			duration: '4N/5D',
+			mainImageUrl: 'assets/images/world-indonesia.jpeg',
+			previewImageUrl: 'assets/images/world-indonesia.jpeg',
+			previewTitle: 'Malaysia'
+		},
+		{
+			number: 5,
+			subtitle: 'Discover the vibrant',
+			title: 'Malaysia',
+			description: 'Malay Peninsula and the island of Borneo. It’s known for its beaches, rainforests and colonial buildings, busy shopping districts such as Bukit Bintang and skyscrapers such as the iconic, 451m-tall Petronas Twin Towers',
+			price: '₹ 51,500',
+			duration: '3N/4D',
+			mainImageUrl: 'assets/images/world-malaysia.jpeg',
+			previewImageUrl: 'assets/images/world-malaysia.jpeg',
+			previewTitle: 'Thailand'
+		},
+		{
+			number: 6,
+			subtitle: 'Relax in paradise',
+			title: 'Thailand',
+			description: 'Thailand is one of the world’s most renowned holiday destinations, with a wide variety of things to see and do, from culture, religion, food, nature, water, adventure, sports and also relaxing activities.',
+			price: '₹ 35,000',
+			duration: '2N/3D',
+			mainImageUrl: 'assets/images/world-thailand.jpeg',
+			previewImageUrl: 'assets/images/world-thailand.jpeg',
+			previewTitle: 'Turkey'
 		}
+        
 	];
 
 	const formatNumber = (num) => String(num).padStart(2, '0');
@@ -204,20 +237,24 @@ try {
 
 		try {
 			gsap.timeline()
-				.to([mainTitle, descriptionText, exploreBtnSpan], { opacity: 0, y: 10, duration: 0.3 })
+				.to([mainTitle, descriptionText, priceText, durationText, exploreBtnSpan], { opacity: 0, y: 10, duration: 0.3 })
 				.call(() => {
 					mainTitle.textContent = newSlide.title;
 					descriptionText.textContent = newSlide.description;
+					priceText.innerHTML = `<span>${newSlide.price}</span>`;
+					durationText.innerHTML = `<i class="fa-regular fa-clock"></i><span> ${newSlide.duration}</span>`;
 					counter.textContent = formatNumber(newSlide.number);
 					if (exploreBtnSpan) {
 						exploreBtnSpan.textContent = `EXPLORE ${newSlide.title.toUpperCase().replace(/\s/g, ' ')}`;
 					}
 				})
-				.to([mainTitle, descriptionText, exploreBtnSpan], { opacity: 1, y: 0, duration: 0.5 });
+				.to([mainTitle, descriptionText, priceText, durationText, exploreBtnSpan], { opacity: 1, y: 0, duration: 0.5 });
 		} catch (e) {
 			// Fallback without GSAP
 			mainTitle.textContent = newSlide.title;
 			descriptionText.textContent = newSlide.description;
+			priceText.innerHTML = `<span>${newSlide.price}</span>`;
+			durationText.innerHTML = `<i class="fa-regular fa-clock"></i><span> ${newSlide.duration}</span>`;
 			counter.textContent = formatNumber(newSlide.number);
 			if (exploreBtnSpan) exploreBtnSpan.textContent = `EXPLORE ${newSlide.title.toUpperCase().replace(/\s/g, ' ')}`;
 		}
