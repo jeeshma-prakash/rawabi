@@ -154,8 +154,8 @@ try {
 			description: 'Experience the ancient empires that have left their mark in world-famous ruins immerse yourself in blockbuster scenery by sea, land and air and feast on world-class gastronomy, celebrating the best of its regional bounty.',
 			price: '₹ 81,500',
 			duration: '5N/6D',
-			mainImageUrl: 'assets/images/world-turkey.jpeg',
-			previewImageUrl: 'assets/images/world-turkey.jpeg',
+			mainImageUrl: 'assets/images/worldturkey.jpeg',
+			previewImageUrl: 'assets/images/worldturkey.jpeg',
 			previewTitle: 'Vietnam'
 		},
 		{
@@ -165,8 +165,8 @@ try {
 			description: 'Vietnam is a land of contrasts. It is home to some of the most beautiful beach destinations in the world, like Da Nang, Nha Trang, or Phu Quoc Island, where crystal-clear waters and white sands create a tropical paradise.',
 			price: '₹ 81,500',
 			duration: '4N/5D',
-			mainImageUrl: 'assets/images/download(18).jpeg',
-			previewImageUrl: 'assets/images/download(18).jpeg',
+			mainImageUrl: 'assets/images/worldVietnam.jpeg',
+			previewImageUrl: 'assets/images/worldVietnam.jpeg',
 			previewTitle: 'Oman'
 		},
 		{
@@ -176,8 +176,8 @@ try {
 			description: 'Oman is the land of adventures, starting from exploring the Hoota Cave, going through the experience of zip-lining in Musandam Governorate. The Sultanate of Oman is globally renowned for its unique culture and rich heritage',
 			price: '₹ 85,000',
 			duration: '5N/6D',
-			mainImageUrl: 'assets/images/world-oman.jpeg',
-			previewImageUrl: 'assets/images/world-oman.jpeg',
+			mainImageUrl: 'assets/images/worldOman.jpeg',
+			previewImageUrl: 'assets/images/worldOman.jpeg',
 			previewTitle: 'Indonesia'
 		},
 		{
@@ -187,8 +187,8 @@ try {
 			description: 'Volcanic landscapes, beautiful beaches, exotic wildlife and a varied cultural heritage make this string of islands an appealing vacation destination. Indonesia is home to a wide range of religions, races and cultures.',
 			price: '₹ 64,000',
 			duration: '4N/5D',
-			mainImageUrl: 'assets/images/world-indonesia.jpeg',
-			previewImageUrl: 'assets/images/world-indonesia.jpeg',
+			mainImageUrl: 'assets/images/worldIndonesia.jpeg',
+			previewImageUrl: 'assets/images/worldIndonesia.jpeg',
 			previewTitle: 'Malaysia'
 		},
 		{
@@ -198,8 +198,8 @@ try {
 			description: 'Malay Peninsula and the island of Borneo. It’s known for its beaches, rainforests and colonial buildings, busy shopping districts such as Bukit Bintang and skyscrapers such as the iconic, 451m-tall Petronas Twin Towers',
 			price: '₹ 51,500',
 			duration: '3N/4D',
-			mainImageUrl: 'assets/images/world-malaysia.jpeg',
-			previewImageUrl: 'assets/images/world-malaysia.jpeg',
+			mainImageUrl: 'assets/images/worldMalaysia.jpeg',
+			previewImageUrl: 'assets/images/worldMalaysia.jpeg',
 			previewTitle: 'Thailand'
 		},
 		{
@@ -209,8 +209,8 @@ try {
 			description: 'Thailand is one of the world’s most renowned holiday destinations, with a wide variety of things to see and do, from culture, religion, food, nature, water, adventure, sports and also relaxing activities.',
 			price: '₹ 35,000',
 			duration: '2N/3D',
-			mainImageUrl: 'assets/images/world-thailand.jpeg',
-			previewImageUrl: 'assets/images/world-thailand.jpeg',
+			mainImageUrl: 'assets/images/worldThailand.jpeg',
+			previewImageUrl: 'assets/images/worldThailand.jpeg',
 			previewTitle: 'Turkey'
 		}
         
