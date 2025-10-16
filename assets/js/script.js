@@ -263,13 +263,12 @@ try {
 		try {
 			gsap.to(mainImage, {
 				opacity: 0, duration: 0.4, onComplete: () => {
-					// Encode URL to be robust on GitHub Pages (spaces, special chars)
-					mainImage.src = encodeURI(newSlide.mainImageUrl);
+					mainImage.src = newSlide.mainImageUrl;
 					try { gsap.to(mainImage, { opacity: 1, duration: 0.6 }); } catch (e) { mainImage.style.opacity = '1'; }
 				}
 			});
 		} catch (e) {
-			mainImage.src = encodeURI(newSlide.mainImageUrl);
+			mainImage.src = newSlide.mainImageUrl;
 		}
 
 		// Sync hero background slider to the same index
@@ -283,7 +282,7 @@ try {
 			item.dataset.index = String(slideIndex);
 			const img = item.querySelector('img');
 			const title = item.querySelector('.preview-item-title');
-			if (img) img.src = encodeURI(slide.mainImageUrl);
+			if (img) img.src = slide.mainImageUrl;
 			if (img) img.alt = slide.title;
 			if (title) title.textContent = slide.title;
 			item.onclick = () => { updateCarousel(slideIndex); };
@@ -312,7 +311,7 @@ try {
 			const slideIndex = (currentIndex + 1 + i) % slides.length;
 			const slide = slides[slideIndex];
 			item.innerHTML = `
-				<img src="${encodeURI(slide.mainImageUrl)}" alt="${slide.title}">
+				<img src="${slide.mainImageUrl}" alt="${slide.title}">
 				<div class="preview-item-content">
 					<p class="preview-item-title">${slide.title}</p>
 				</div>`;
@@ -321,12 +320,19 @@ try {
 		}
 	}
 
-	document.addEventListener('DOMContentLoaded', () => {
+	function initCarousel() {
 		initializePreviews();
 		updateCarousel(0);
 		prevBtn?.addEventListener('click', () => updateCarousel(currentIndex - 1));
 		nextBtn?.addEventListener('click', () => updateCarousel(currentIndex + 1));
-	});
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initCarousel);
+	} else {
+		// DOM already parsed (possible on some hosts/CDNs) — init immediately
+		initCarousel();
+	}
 
 	// Helper retained from original (unused here, can be used elsewhere)
 	function base64ToArrayBuffer(base64) {
