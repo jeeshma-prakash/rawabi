@@ -2283,15 +2283,15 @@ input.form-control::placeholder {
 }
 
 /* Background images for each card */
-.md-grid article:nth-child(1) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/download (18).jpeg') no-repeat center/cover; }
-.md-grid article:nth-child(2) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/Maldives Crystal Beach Art - Maldives_ Artful Crystal Beach Escape.jpeg') no-repeat center/cover; }
-.md-grid article:nth-child(3) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/Maldives Guide_ Where To Stay, What To Do & How To Save.jpeg') no-repeat center/cover; }
-.md-grid article:nth-child(4) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/download (19).jpeg') no-repeat center/cover; }
-.md-grid article:nth-child(5) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/The Ultimate Guide to Cherry Blossom Festivals Across Japan.jpeg') no-repeat center/cover; }
-.md-grid article:nth-child(6) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/Overwater Bungalows in the Maldives.jpeg') no-repeat center/cover; }
-.md-grid article:nth-child(7) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/download (20).jpeg') no-repeat center/cover; }
-.md-grid article:nth-child(8) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/download (21).jpeg') no-repeat center/cover; }
-.md-grid article:nth-child(9) { background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(0, 0, 0, 0.5)), url('../images/landscape.jpeg') no-repeat center/cover; }
+.md-grid article:nth-child(1) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/calicut-wayanad-ooty.jpeg') no-repeat center/cover; }
+.md-grid article:nth-child(2) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/Salalah\,\ Oman.jpeg') no-repeat center/cover; }
+.md-grid article:nth-child(3) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/Almaty\,\ Kazakhstan.jpeg') no-repeat center/cover; }
+.md-grid article:nth-child(4) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/Dubai\,\ UAE') no-repeat center/cover; }
+.md-grid article:nth-child(5) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/Pattaya\,\ Thailand.jpeg') no-repeat center/cover; }
+.md-grid article:nth-child(6) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/Colombo\,\ Sri\ Lanka.jpeg') no-repeat center/cover; }
+.md-grid article:nth-child(7) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/Bali\,\ Indonesia.jpeg') no-repeat center/cover; }
+.md-grid article:nth-child(8) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/Saigon\,\ Vietnam.jpeg') no-repeat center/cover; }
+.md-grid article:nth-child(9) { background: linear-gradient(rgba(20, 20, 20, 0.3),  rgba(0, 0, 0, 0.2)), url('../images/Kuala\ Lampur\,\ Malaysia.jpeg') no-repeat center/cover; }
 
 /* Overlay content */
 .md-overlay {
@@ -2353,7 +2353,7 @@ input.form-control::placeholder {
 }
 
 .md-card:hover .md-content span {
-  top: -38px;
+  top: -42px;
   bottom: auto;
   left: 10px;
 }
