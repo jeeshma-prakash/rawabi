@@ -154,8 +154,8 @@ try {
 			description: 'Experience the ancient empires that have left their mark in world-famous ruins immerse yourself in blockbuster scenery by sea, land and air and feast on world-class gastronomy, celebrating the best of its regional bounty.',
 			price: '₹ 81,500',
 			duration: '5N/6D',
-			mainImageUrl: 'assets/images/world-turkey.jpeg',
-			previewImageUrl: 'assets/images/world-turkey.jpeg',
+			mainImageUrl: '../images/world-turkey.jpeg',
+			previewImageUrl: '../images/world-turkey.jpeg',
 			previewTitle: 'Vietnam'
 		},
 		{
@@ -165,8 +165,8 @@ try {
 			description: 'Vietnam is a land of contrasts. It is home to some of the most beautiful beach destinations in the world, like Da Nang, Nha Trang, or Phu Quoc Island, where crystal-clear waters and white sands create a tropical paradise.',
 			price: '₹ 81,500',
 			duration: '4N/5D',
-			mainImageUrl: 'assets/images/world-vietnam.jpeg',
-			previewImageUrl: 'assets/images/world-vietnam.jpeg',
+			mainImageUrl: '../images/world-vietnam.jpeg',
+			previewImageUrl: '../images/world-vietnam.jpeg',
 			previewTitle: 'Oman'
 		},
 		{
