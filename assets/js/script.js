@@ -187,8 +187,8 @@ try {
 			description: 'Volcanic landscapes, beautiful beaches, exotic wildlife and a varied cultural heritage make this string of islands an appealing vacation destination. Indonesia is home to a wide range of religions, races and cultures.',
 			price: '₹ 64,000',
 			duration: '4N/5D',
-			mainImageUrl: 'assets/images/indonasia-world.jpg',
-			previewImageUrl: 'assets/images/indonasia-world.jpg',
+			mainImageUrl: 'assets/images/Bali, Indonesia.jpeg',
+			previewImageUrl: 'assets/images/Bali, Indonesia.jpeg',
 			previewTitle: 'Malaysia'
 		},
 		{
