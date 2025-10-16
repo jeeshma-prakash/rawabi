@@ -2077,7 +2077,7 @@ input.form-control::placeholder {
 
 .btn-send:hover {
   transform: translateY(-3px);
-  background: linear-gradient(90deg, #009bb5, #0063d9);
+  background: linear-gradient(90deg, #b50000, #fb4444);
 }
 
 /* ===== Images Around ===== */
