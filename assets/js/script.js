@@ -165,8 +165,8 @@ try {
 			description: 'Vietnam is a land of contrasts. It is home to some of the most beautiful beach destinations in the world, like Da Nang, Nha Trang, or Phu Quoc Island, where crystal-clear waters and white sands create a tropical paradise.',
 			price: '₹ 81,500',
 			duration: '4N/5D',
-			mainImageUrl: 'assets/images/worldvietnam.jpeg',
-			previewImageUrl: 'assets/images/worldvietnam.jpeg',
+			mainImageUrl: 'assets/images/Saigon,vietnam.jpeg',
+			previewImageUrl: 'assets/images/Saigon,vietnam.jpeg',
 			previewTitle: 'Oman'
 		},
 		{
