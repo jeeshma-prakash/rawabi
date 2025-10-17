@@ -1,5 +1,5 @@
 body {
-  background: #f7eded !important;
+  background:linear-gradient(rgba(255, 255, 255, 0.788), rgba(248, 248, 248, 0.788), rgba(245, 245, 245, 0.89)), url('../images/5540822.jpg') center !important;
 }
 
 :root {
@@ -1885,7 +1885,7 @@ body {
 }
 
 .footer-divider path {
-  fill: #f7eded;
+  fill: #f5f2f0;
 }
 
 @keyframes moveWave {
