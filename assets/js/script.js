@@ -177,7 +177,7 @@ try {
 			number: 3,
 			subtitle: 'Hike the majestic',
 			title: 'Oman',
-			description: 'Oman is the land of adventures, starting from exploring the Hoota Cave, going through the experience of zip-lining in Musandam Governorate. The Sultanate of Oman is globally renowned for its unique culture and rich heritage',
+			description: 'Oman is the land of adventures, starting from exploring the Hoota Cave, going through the experience of zip-lining in Musandam Governorate. The Sultanate of Oman is globally renowned for its unique culture ',
 			price: '₹ 85,000',
 			duration: '5N/6D',
 			mainImageUrl: 'assets/images/oman-world.jpg',
