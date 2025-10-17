@@ -131,7 +131,11 @@ try {
 (function () {
 	const DURATION = 3000; // ms per slide
 	let currentIndex = 0;
-	let intervalId;
+	let intervalId = null;
+	let restartTimer = null;        // debounce auto-advance restarts
+	let isTransitioning = false;    // transition lock for rapid clicks
+	let pendingIndex = null;        // queue the latest requested index while locked
+	let contentTl = null;           // gsap timeline reference
 
 	const mainImage = document.getElementById('main-image');
 	const mainTitle = document.getElementById('main-title-text');
@@ -226,29 +230,83 @@ try {
 		} catch (e) { /* if GSAP missing, skip progress anim */ }
 	}
 
-	function updateCarousel(newIndex) {
-		clearInterval(intervalId);
+	function stopAuto() {
+		if (intervalId) {
+			clearInterval(intervalId);
+			intervalId = null;
+		}
 		try { gsap.killTweensOf(progressLine); } catch (e) {}
+	}
+
+	function scheduleAutoRestart(delay = 1000) {
+		if (restartTimer) clearTimeout(restartTimer);
+		restartTimer = setTimeout(() => {
+			startAutoAdvance();
+		}, delay);
+	}
+
+	function updateCarousel(newIndex) {
+		// If we're mid-transition, queue the latest request and bail
+		if (isTransitioning) {
+			pendingIndex = newIndex;
+			return;
+		}
+
+		isTransitioning = true;
+		stopAuto();
 
 		newIndex = (newIndex + slides.length) % slides.length;
 		const newSlide = slides[newIndex];
-
 		const exploreBtnSpan = document.querySelector('.explore-btn span:first-child');
 
+		// Track completion of content fade + image swap
+		let contentDone = false;
+		let imageDone = false;
+		const maybeDone = () => {
+			if (contentDone && imageDone) {
+				// Update previews relative to the NEW index
+				document.querySelectorAll('.preview-item').forEach((item, i) => {
+					const pIndex = (newIndex + 1 + i) % slides.length;
+					const s = slides[pIndex];
+					item.dataset.index = String(pIndex);
+					const img = item.querySelector('img');
+					const title = item.querySelector('.preview-item-title');
+					if (img) img.src = s.mainImageUrl;
+					if (img) img.alt = s.title;
+					if (title) title.textContent = s.title;
+					item.onclick = () => { goToIndex(pIndex); };
+				});
+
+				currentIndex = newIndex;
+				isTransitioning = false;
+
+				// If user clicked again while locked, jump now to the latest requested and clear it
+				if (pendingIndex !== null) {
+					const idx = pendingIndex; pendingIndex = null;
+					updateCarousel(idx);
+					return;
+				}
+
+				// Resume auto-advance after a short pause
+				scheduleAutoRestart(1000);
+			}
+		};
+
+		// Content fade out -> swap -> fade in
 		try {
-			gsap.timeline()
-				.to([mainTitle, descriptionText, priceText, durationText, exploreBtnSpan], { opacity: 0, y: 10, duration: 0.3 })
+			if (contentTl) { try { contentTl.kill(); } catch (e) {} }
+			contentTl = gsap.timeline({ onComplete: () => { contentDone = true; maybeDone(); } });
+			contentTl
+				.to([mainTitle, descriptionText, priceText, durationText, exploreBtnSpan], { opacity: 0, y: 10, duration: 0.25 })
 				.call(() => {
 					mainTitle.textContent = newSlide.title;
 					descriptionText.textContent = newSlide.description;
 					priceText.innerHTML = `<span>${newSlide.price}</span>`;
 					durationText.innerHTML = `<i class="fa-regular fa-clock"></i><span> ${newSlide.duration}</span>`;
 					counter.textContent = formatNumber(newSlide.number);
-					if (exploreBtnSpan) {
-						exploreBtnSpan.textContent = `EXPLORE ${newSlide.title.toUpperCase().replace(/\s/g, ' ')}`;
-					}
+					if (exploreBtnSpan) exploreBtnSpan.textContent = `EXPLORE ${newSlide.title.toUpperCase().replace(/\s/g, ' ')}`;
 				})
-				.to([mainTitle, descriptionText, priceText, durationText, exploreBtnSpan], { opacity: 1, y: 0, duration: 0.5 });
+				.to([mainTitle, descriptionText, priceText, durationText, exploreBtnSpan], { opacity: 1, y: 0, duration: 0.4 });
 		} catch (e) {
 			// Fallback without GSAP
 			mainTitle.textContent = newSlide.title;
@@ -256,40 +314,34 @@ try {
 			priceText.innerHTML = `<span>${newSlide.price}</span>`;
 			durationText.innerHTML = `<i class="fa-regular fa-clock"></i><span> ${newSlide.duration}</span>`;
 			counter.textContent = formatNumber(newSlide.number);
-			if (exploreBtnSpan) exploreBtnSpan.textContent = `EXPLORE ${newSlide.title.toUpperCase().replace(/\s/g, ' ')}`;
+			contentDone = true;
 		}
 
-		// Main image crossfade
-		try {
-			gsap.to(mainImage, {
-				opacity: 0, duration: 0.4, onComplete: () => {
-					mainImage.src = newSlide.mainImageUrl;
-					try { gsap.to(mainImage, { opacity: 1, duration: 0.6 }); } catch (e) { mainImage.style.opacity = '1'; }
-				}
-			});
-		} catch (e) {
-			mainImage.src = newSlide.mainImageUrl;
-		}
+		// Main image swap: preload target, then fade swap
+		const targetSrc = newSlide.mainImageUrl;
+		const imgTemp = new Image();
+		imgTemp.onload = () => {
+			try {
+				gsap.to(mainImage, {
+					opacity: 0, duration: 0.25, onComplete: () => {
+						mainImage.src = targetSrc;
+						try { gsap.to(mainImage, { opacity: 1, duration: 0.35, onComplete: () => { imageDone = true; maybeDone(); } }); }
+						catch (e) { mainImage.style.opacity = '1'; imageDone = true; maybeDone(); }
+					}
+				});
+			} catch (e) {
+				mainImage.src = targetSrc; imageDone = true; maybeDone();
+			}
+		};
+		imgTemp.onerror = () => { // even if it fails, proceed
+			mainImage.src = targetSrc; imageDone = true; maybeDone();
+		};
+		imgTemp.src = targetSrc;
 
-		// Sync hero background slider to the same index
+		// Sync hero background slider to the same index (no-op if undefined)
 		if (window.__heroBgSlider && typeof window.__heroBgSlider.goto === 'function') {
 			window.__heroBgSlider.goto(newIndex);
 		}
-
-		document.querySelectorAll('.preview-item').forEach((item, i) => {
-			const slideIndex = (currentIndex + 1 + i) % slides.length;
-			const slide = slides[slideIndex];
-			item.dataset.index = String(slideIndex);
-			const img = item.querySelector('img');
-			const title = item.querySelector('.preview-item-title');
-			if (img) img.src = slide.mainImageUrl;
-			if (img) img.alt = slide.title;
-			if (title) title.textContent = slide.title;
-			item.onclick = () => { updateCarousel(slideIndex); };
-		});
-
-		currentIndex = newIndex;
-		setTimeout(() => { startAutoAdvance(); }, 1000);
 	}
 
 	function autoAdvance() {
@@ -299,6 +351,8 @@ try {
 	}
 
 	function startAutoAdvance() {
+		// Avoid multiple intervals
+		if (intervalId) clearInterval(intervalId);
 		animateProgress();
 		intervalId = setInterval(autoAdvance, DURATION);
 	}
@@ -315,7 +369,7 @@ try {
 				<div class="preview-item-content">
 					<p class="preview-item-title">${slide.title}</p>
 				</div>`;
-			item.addEventListener('click', () => { updateCarousel(slideIndex); });
+			item.addEventListener('click', () => { goToIndex(slideIndex); });
 			previewList.appendChild(item);
 		}
 	}
@@ -323,9 +377,14 @@ try {
 	document.addEventListener('DOMContentLoaded', () => {
 		initializePreviews();
 		updateCarousel(0);
-		prevBtn?.addEventListener('click', () => updateCarousel(currentIndex - 1));
-		nextBtn?.addEventListener('click', () => updateCarousel(currentIndex + 1));
+		prevBtn?.addEventListener('click', () => goToIndex(currentIndex - 1));
+		nextBtn?.addEventListener('click', () => goToIndex(currentIndex + 1));
 	});
+
+	function goToIndex(idx) {
+		if (isTransitioning) { pendingIndex = idx; return; }
+		updateCarousel(idx);
+	}
 
 	// Helper retained from original (unused here, can be used elsewhere)
 	function base64ToArrayBuffer(base64) {
